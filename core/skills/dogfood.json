@@ -1,0 +1,17 @@
+{
+  "name": "dogfood",
+  "display_name": "dogfood",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Exploratory QA of web apps: find bugs, evidence, reports.",
+  "trigger": "",
+  "tags": [
+    "qa",
+    "testing",
+    "browser",
+    "web",
+    "dogfood"
+  ],
+  "author": "Unknown",
+  "synced_at": "2026-06-06T14:43:24.263874"
+}

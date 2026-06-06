@@ -3,1182 +3,882 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hermes Skill Registry - 技能商店</title>
+    <title>Hermes Skill Registry - 发现和安装优质技能</title>
     <style>
-:root { --primary: #6366f1; --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui; background: var(--bg); color: var(--text); line-height: 1.6; }
-.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-header { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #6366f1, #8b5cf6); }
-header h1 { font-size: 3em; margin-bottom: 10px; }
-header p { opacity: 0.9; font-size: 1.2em; }
-.search-box { max-width: 600px; margin: 30px auto; }
-.search-box input { width: 100%; padding: 15px 25px; font-size: 1.1em; border: none; border-radius: 50px; outline: none; }
-.categories { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 30px 0; }
-.category-tag { background: var(--card); padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: 0.3s; }
-.category-tag:hover, .category-tag.active { background: var(--primary); }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; }
-.skill-card { background: var(--card); border-radius: 12px; padding: 25px; transition: transform 0.2s; }
-.skill-card:hover { transform: translateY(-5px); }
-.skill-card h3 { color: var(--primary); margin-bottom: 10px; }
-.skill-card p { opacity: 0.8; font-size: 0.95em; margin-bottom: 15px; }
-.skill-meta { display: flex; gap: 10px; flex-wrap: wrap; font-size: 0.85em; opacity: 0.7; }
-.tag { background: rgba(99,102,241,0.2); padding: 4px 10px; border-radius: 15px; }
-.install-cmd { background: #0f172a; padding: 10px 15px; border-radius: 8px; font-family: monospace; margin-top: 15px; font-size: 0.9em; }
-footer { text-align: center; padding: 40px; margin-top: 60px; opacity: 0.7; border-top: 1px solid var(--card); }
-</style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #00d4ff;
+            --border: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header {
+            background: var(--bg-secondary);
+            padding: 40px 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .subtitle { color: var(--text-secondary); font-size: 1.1em; }
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .stat {
+            background: var(--bg-primary);
+            padding: 15px 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .stat-value { font-size: 2em; font-weight: bold; color: var(--accent); }
+        .stat-label { color: var(--text-secondary); font-size: 0.9em; }
+        .search-section {
+            padding: 30px 20px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+        }
+        #search {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-primary);
+        }
+        #search:focus { outline: 2px solid var(--accent); }
+        .categories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .category-btn {
+            padding: 8px 16px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .category-btn:hover, .category-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #000;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            padding: 30px 0;
+        }
+        .skill-card {
+            background: var(--bg-secondary);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .skill-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent);
+        }
+        .skill-card h3 a {
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .skill-card h3 a:hover { color: var(--accent); }
+        .description {
+            color: var(--text-secondary);
+            margin: 15px 0;
+            font-size: 0.95em;
+        }
+        .meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .category, .version {
+            padding: 4px 12px;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+        }
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        @media (max-width: 768px) {
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+            font-size: 1.2em;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>🚀 Hermes Skill Registry</h1>
-        <p>发现和安装优质的 Hermes Agent 技能</p>
-        <div class="search-box">
-            <input type="text" id="search" placeholder="搜索技能..." onkeyup="filterSkills()">
+        <div class="container">
+            <h1>🚀 Hermes Skill Registry</h1>
+            <p class="subtitle">发现和安装优质的 Hermes Agent 技能</p>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">74</div>
+                    <div class="stat-label">总技能数</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">分类</div>
+                </div>
+            </div>
         </div>
     </header>
-    
-    <div class="container">
-        <div class="categories" id="categories">
-            <span class="category-tag active" data-cat="all">全部 (91)</span>
-            <span class="category-tag" data-cat="creative">creative (5)</span>
-            <span class="category-tag" data-cat="data-science">data-science (1)</span>
-            <span class="category-tag" data-cat="desktop">desktop (1)</span>
-            <span class="category-tag" data-cat="devops">devops (1)</span>
-            <span class="category-tag" data-cat="productivity">productivity (3)</span>
-            <span class="category-tag" data-cat="research">research (2)</span>
-            <span class="category-tag" data-cat="uncategorized">uncategorized (78)</span>
 
+    <div class="search-section">
+        <div class="container">
+            <input type="text" id="search" placeholder="🔍 搜索技能名称或描述...">
+            <div class="categories" id="categories">
+                <button class="category-btn active" data-category="all">全部 (74)</button>
+                <button class="category-btn" data-category="creative">creative (2)</button><button class="category-btn" data-category="data-science">data-science (1)</button><button class="category-btn" data-category="desktop">desktop (1)</button><button class="category-btn" data-category="productivity">productivity (1)</button><button class="category-btn" data-category="research">research (2)</button><button class="category-btn" data-category="uncategorized">uncategorized (67)</button>
+            </div>
         </div>
-        
-        <div class="skills-grid" id="skillsGrid">
+    </div>
+
+    <main class="container">
+        <div class="skills-grid" id="skills-grid">
             
-    <div class="skill-card" data-name="arxiv" data-category="uncategorized">
-        <h3>arxiv</h3>
-        <p>Search arXiv papers by keyword, author, category, or ID.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Research</span><span class="tag">#Arxiv</span><span class="tag">#Papers</span><span class="tag">#Academic</span><span class="tag">#Science</span>
-        <div class="install-cmd">$ hermes skill install arxiv</div>
-    </div>
-    
-    <div class="skill-card" data-name="llm-wiki" data-category="research">
-        <h3>llm-wiki</h3>
-        <p>Karpathy's LLM Wiki: build/query interlinked markdown KB.</p>
-        <div class="skill-meta">
-            <span>📦 v2.1.0</span>
-            <span>📂 research</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#wiki</span><span class="tag">#knowledge-base</span><span class="tag">#research</span><span class="tag">#notes</span><span class="tag">#markdown</span>
-        <div class="install-cmd">$ hermes skill install llm-wiki</div>
-    </div>
-    
-    <div class="skill-card" data-name="blogwatcher" data-category="uncategorized">
-        <h3>blogwatcher</h3>
-        <p>Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool.</p>
-        <div class="skill-meta">
-            <span>📦 v2.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ JulienTant (fork of Hyaxia/blogwatcher)</span>
-        </div>
-        <span class="tag">#RSS</span><span class="tag">#Blogs</span><span class="tag">#Feed-Reader</span><span class="tag">#Monitoring</span>
-        <div class="install-cmd">$ hermes skill install blogwatcher</div>
-    </div>
-    
-    <div class="skill-card" data-name="research-paper-writing" data-category="research">
-        <h3>research-paper-writing</h3>
-        <p>Write ML papers for NeurIPS/ICML/ICLR: design→submit.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 research</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#Research</span><span class="tag">#Paper Writing</span><span class="tag">#Experiments</span><span class="tag">#ML</span><span class="tag">#AI</span>
-        <div class="install-cmd">$ hermes skill install research-paper-writing</div>
-    </div>
-    
-    <div class="skill-card" data-name="polymarket" data-category="uncategorized">
-        <h3>polymarket</h3>
-        <p>Query Polymarket: markets, prices, orderbooks, history.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent + Teknium</span>
-        </div>
-        <span class="tag">#polymarket</span><span class="tag">#prediction-markets</span><span class="tag">#market-data</span><span class="tag">#trading</span>
-        <div class="install-cmd">$ hermes skill install polymarket</div>
-    </div>
-    
-    <div class="skill-card" data-name="xurl" data-category="uncategorized">
-        <h3>xurl</h3>
-        <p>X/Twitter via xurl CLI: post, search, DM, media, v2 API.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.1</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ xdevplatform + openclaw + Hermes Agent</span>
-        </div>
-        <span class="tag">#twitter</span><span class="tag">#x</span><span class="tag">#social-media</span><span class="tag">#xurl</span><span class="tag">#official-api</span>
-        <div class="install-cmd">$ hermes skill install xurl</div>
-    </div>
-    
-    <div class="skill-card" data-name="jupyter-live-kernel" data-category="data-science">
-        <h3>jupyter-live-kernel</h3>
-        <p>Iterative Python via live Jupyter kernel (hamelnb).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 data-science</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#jupyter</span><span class="tag">#notebook</span><span class="tag">#repl</span><span class="tag">#data-science</span><span class="tag">#exploration</span>
-        <div class="install-cmd">$ hermes skill install jupyter-live-kernel</div>
-    </div>
-    
-    <div class="skill-card" data-name="gif-search" data-category="uncategorized">
-        <h3>gif-search</h3>
-        <p>Search/download GIFs from Tenor via curl + jq.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#GIF</span><span class="tag">#Media</span><span class="tag">#Search</span><span class="tag">#Tenor</span><span class="tag">#API</span>
-        <div class="install-cmd">$ hermes skill install gif-search</div>
-    </div>
-    
-    <div class="skill-card" data-name="spotify" data-category="uncategorized">
-        <h3>spotify</h3>
-        <p>Spotify: play, search, queue, manage playlists and devices.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#spotify</span><span class="tag">#music</span><span class="tag">#playback</span><span class="tag">#playlists</span><span class="tag">#media</span>
-        <div class="install-cmd">$ hermes skill install spotify</div>
-    </div>
-    
-    <div class="skill-card" data-name="youtube-content" data-category="uncategorized">
-        <h3>youtube-content</h3>
-        <p>YouTube transcripts to summaries, threads, blogs.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="airtable" data-category="uncategorized">
+            <h3><a href="skills/airtable.html">airtable</a></h3>
+            <p class="description">Airtable REST API via curl. Records CRUD, filters, upserts....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install youtube-content</div>
-    </div>
-    
-    <div class="skill-card" data-name="heartmula" data-category="uncategorized">
-        <h3>heartmula</h3>
-        <p>HeartMuLa: Suno-like song generation from lyrics + tags.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#music</span><span class="tag">#audio</span><span class="tag">#generation</span><span class="tag">#ai</span><span class="tag">#heartmula</span>
-        <div class="install-cmd">$ hermes skill install heartmula</div>
-    </div>
-    
-    <div class="skill-card" data-name="songsee" data-category="uncategorized">
-        <h3>songsee</h3>
-        <p>Audio spectrograms/features (mel, chroma, MFCC) via CLI.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ community</span>
-        </div>
-        <span class="tag">#Audio</span><span class="tag">#Visualization</span><span class="tag">#Spectrogram</span><span class="tag">#Music</span><span class="tag">#Analysis</span>
-        <div class="install-cmd">$ hermes skill install songsee</div>
-    </div>
-    
-    <div class="skill-card" data-name="codebase-inspection" data-category="uncategorized">
-        <h3>codebase-inspection</h3>
-        <p>Inspect codebases w/ pygount: LOC, languages, ratios.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#LOC</span><span class="tag">#Code Analysis</span><span class="tag">#pygount</span><span class="tag">#Codebase</span><span class="tag">#Metrics</span>
-        <div class="install-cmd">$ hermes skill install codebase-inspection</div>
-    </div>
-    
-    <div class="skill-card" data-name="github-auth" data-category="uncategorized">
-        <h3>github-auth</h3>
-        <p>GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#GitHub</span><span class="tag">#Authentication</span><span class="tag">#Git</span><span class="tag">#gh-cli</span><span class="tag">#SSH</span>
-        <div class="install-cmd">$ hermes skill install github-auth</div>
-    </div>
-    
-    <div class="skill-card" data-name="github-pr-workflow" data-category="uncategorized">
-        <h3>github-pr-workflow</h3>
-        <p>GitHub PR lifecycle: branch, commit, open, CI, merge.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#GitHub</span><span class="tag">#Pull-Requests</span><span class="tag">#CI/CD</span><span class="tag">#Git</span><span class="tag">#Automation</span>
-        <div class="install-cmd">$ hermes skill install github-pr-workflow</div>
-    </div>
-    
-    <div class="skill-card" data-name="github-issues" data-category="uncategorized">
-        <h3>github-issues</h3>
-        <p>Create, triage, label, assign GitHub issues via gh or REST.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#GitHub</span><span class="tag">#Issues</span><span class="tag">#Project-Management</span><span class="tag">#Bug-Tracking</span><span class="tag">#Triage</span>
-        <div class="install-cmd">$ hermes skill install github-issues</div>
-    </div>
-    
-    <div class="skill-card" data-name="github-code-review" data-category="uncategorized">
-        <h3>github-code-review</h3>
-        <p>Review PRs: diffs, inline comments via gh or REST.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#GitHub</span><span class="tag">#Code-Review</span><span class="tag">#Pull-Requests</span><span class="tag">#Git</span><span class="tag">#Quality</span>
-        <div class="install-cmd">$ hermes skill install github-code-review</div>
-    </div>
-    
-    <div class="skill-card" data-name="github-repo-management" data-category="uncategorized">
-        <h3>github-repo-management</h3>
-        <p>Clone/create/fork repos; manage remotes, releases.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#GitHub</span><span class="tag">#Repositories</span><span class="tag">#Git</span><span class="tag">#Releases</span><span class="tag">#Secrets</span>
-        <div class="install-cmd">$ hermes skill install github-repo-management</div>
-    </div>
-    
-    <div class="skill-card" data-name="apple-notes" data-category="uncategorized">
-        <h3>apple-notes</h3>
-        <p>Manage Apple Notes via memo CLI: create, search, edit.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Notes</span><span class="tag">#Apple</span><span class="tag">#macOS</span><span class="tag">#note-taking</span>
-        <div class="install-cmd">$ hermes skill install apple-notes</div>
-    </div>
-    
-    <div class="skill-card" data-name="findmy" data-category="uncategorized">
-        <h3>findmy</h3>
-        <p>Track Apple devices/AirTags via FindMy.app on macOS.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#FindMy</span><span class="tag">#AirTag</span><span class="tag">#location</span><span class="tag">#tracking</span><span class="tag">#macOS</span>
-        <div class="install-cmd">$ hermes skill install findmy</div>
-    </div>
-    
-    <div class="skill-card" data-name="apple-reminders" data-category="uncategorized">
-        <h3>apple-reminders</h3>
-        <p>Apple Reminders via remindctl: add, list, complete.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Reminders</span><span class="tag">#tasks</span><span class="tag">#todo</span><span class="tag">#macOS</span><span class="tag">#Apple</span>
-        <div class="install-cmd">$ hermes skill install apple-reminders</div>
-    </div>
-    
-    <div class="skill-card" data-name="imessage" data-category="uncategorized">
-        <h3>imessage</h3>
-        <p>Send and receive iMessages/SMS via the imsg CLI on macOS.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#iMessage</span><span class="tag">#SMS</span><span class="tag">#messaging</span><span class="tag">#macOS</span><span class="tag">#Apple</span>
-        <div class="install-cmd">$ hermes skill install imessage</div>
-    </div>
-    
-    <div class="skill-card" data-name="macos-computer-use" data-category="desktop">
-        <h3>macos-computer-use</h3>
-        <p>|</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 desktop</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#computer-use</span><span class="tag">#macos</span><span class="tag">#desktop</span><span class="tag">#automation</span><span class="tag">#gui</span>
-        <div class="install-cmd">$ hermes skill install macos-computer-use</div>
-    </div>
-    
-    <div class="skill-card" data-name="dspy" data-category="uncategorized">
-        <h3>dspy</h3>
-        <p>DSPy: declarative LM programs, auto-optimize prompts, RAG.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#Prompt Engineering</span><span class="tag">#DSPy</span><span class="tag">#Declarative Programming</span><span class="tag">#RAG</span><span class="tag">#Agents</span>
-        <div class="install-cmd">$ hermes skill install dspy</div>
-    </div>
-    
-    <div class="skill-card" data-name="weights-and-biases" data-category="uncategorized">
-        <h3>weights-and-biases</h3>
-        <p>W&B: log ML experiments, sweeps, model registry, dashboards.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#MLOps</span><span class="tag">#Weights And Biases</span><span class="tag">#WandB</span><span class="tag">#Experiment Tracking</span><span class="tag">#Hyperparameter Tuning</span>
-        <div class="install-cmd">$ hermes skill install weights-and-biases</div>
-    </div>
-    
-    <div class="skill-card" data-name="evaluating-llms-harness" data-category="uncategorized">
-        <h3>evaluating-llms-harness</h3>
-        <p>lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#Evaluation</span><span class="tag">#LM Evaluation Harness</span><span class="tag">#Benchmarking</span><span class="tag">#MMLU</span><span class="tag">#HumanEval</span>
-        <div class="install-cmd">$ hermes skill install evaluating-llms-harness</div>
-    </div>
-    
-    <div class="skill-card" data-name="huggingface-hub" data-category="uncategorized">
-        <h3>huggingface-hub</h3>
-        <p>HuggingFace hf CLI: search/download/upload models, datasets.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hugging Face</span>
-        </div>
-        <span class="tag">#huggingface</span><span class="tag">#hf</span><span class="tag">#models</span><span class="tag">#datasets</span><span class="tag">#hub</span>
-        <div class="install-cmd">$ hermes skill install huggingface-hub</div>
-    </div>
-    
-    <div class="skill-card" data-name="audiocraft-audio-generation" data-category="uncategorized">
-        <h3>audiocraft-audio-generation</h3>
-        <p>AudioCraft: MusicGen text-to-music, AudioGen text-to-sound.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#Multimodal</span><span class="tag">#Audio Generation</span><span class="tag">#Text-to-Music</span><span class="tag">#Text-to-Audio</span><span class="tag">#MusicGen</span>
-        <div class="install-cmd">$ hermes skill install audiocraft-audio-generation</div>
-    </div>
-    
-    <div class="skill-card" data-name="segment-anything-model" data-category="uncategorized">
-        <h3>segment-anything-model</h3>
-        <p>SAM: zero-shot image segmentation via points, boxes, masks.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#Multimodal</span><span class="tag">#Image Segmentation</span><span class="tag">#Computer Vision</span><span class="tag">#SAM</span><span class="tag">#Zero-Shot</span>
-        <div class="install-cmd">$ hermes skill install segment-anything-model</div>
-    </div>
-    
-    <div class="skill-card" data-name="llama-cpp" data-category="uncategorized">
-        <h3>llama-cpp</h3>
-        <p>llama.cpp local GGUF inference + HF Hub model discovery.</p>
-        <div class="skill-meta">
-            <span>📦 v2.1.2</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#llama.cpp</span><span class="tag">#GGUF</span><span class="tag">#Quantization</span><span class="tag">#Hugging Face Hub</span><span class="tag">#CPU Inference</span>
-        <div class="install-cmd">$ hermes skill install llama-cpp</div>
-    </div>
-    
-    <div class="skill-card" data-name="serving-llms-vllm" data-category="uncategorized">
-        <h3>serving-llms-vllm</h3>
-        <p>vLLM: high-throughput LLM serving, OpenAI API, quantization.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Orchestra Research</span>
-        </div>
-        <span class="tag">#vLLM</span><span class="tag">#Inference Serving</span><span class="tag">#PagedAttention</span><span class="tag">#Continuous Batching</span><span class="tag">#High Throughput</span>
-        <div class="install-cmd">$ hermes skill install serving-llms-vllm</div>
-    </div>
-    
-    <div class="skill-card" data-name="obliteratus" data-category="uncategorized">
-        <h3>obliteratus</h3>
-        <p>OBLITERATUS: abliterate LLM refusals (diff-in-means).</p>
-        <div class="skill-meta">
-            <span>📦 v2.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Abliteration</span><span class="tag">#Uncensoring</span><span class="tag">#Refusal-Removal</span><span class="tag">#LLM</span><span class="tag">#Weight-Projection</span>
-        <div class="install-cmd">$ hermes skill install obliteratus</div>
-    </div>
-    
-    <div class="skill-card" data-name="opencode" data-category="uncategorized">
-        <h3>opencode</h3>
-        <p>Delegate coding to OpenCode CLI (features, PR review).</p>
-        <div class="skill-meta">
-            <span>📦 v1.2.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Coding-Agent</span><span class="tag">#OpenCode</span><span class="tag">#Autonomous</span><span class="tag">#Refactoring</span><span class="tag">#Code-Review</span>
-        <div class="install-cmd">$ hermes skill install opencode</div>
-    </div>
-    
-    <div class="skill-card" data-name="kanban-codex-lane" data-category="uncategorized">
-        <h3>kanban-codex-lane</h3>
-        <p>Use when a Hermes Kanban worker wants to run Codex CLI as an isolated implementation lane while Hermes keeps ownership of task lifecycle, reconciliation, testing, and handoff.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#kanban</span><span class="tag">#codex</span><span class="tag">#worktrees</span><span class="tag">#autonomous-agents</span><span class="tag">#prediction-market-bot</span>
-        <div class="install-cmd">$ hermes skill install kanban-codex-lane</div>
-    </div>
-    
-    <div class="skill-card" data-name="claude-code" data-category="uncategorized">
-        <h3>claude-code</h3>
-        <p>Delegate coding to Claude Code CLI (features, PRs).</p>
-        <div class="skill-meta">
-            <span>📦 v2.2.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent + Teknium</span>
-        </div>
-        <span class="tag">#Coding-Agent</span><span class="tag">#Claude</span><span class="tag">#Anthropic</span><span class="tag">#Code-Review</span><span class="tag">#Refactoring</span>
-        <div class="install-cmd">$ hermes skill install claude-code</div>
-    </div>
-    
-    <div class="skill-card" data-name="hermes-agent" data-category="uncategorized">
-        <h3>hermes-agent</h3>
-        <p>Configure, extend, or contribute to Hermes Agent.</p>
-        <div class="skill-meta">
-            <span>📦 v2.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent + Teknium</span>
-        </div>
-        <span class="tag">#hermes</span><span class="tag">#setup</span><span class="tag">#configuration</span><span class="tag">#multi-agent</span><span class="tag">#spawning</span>
-        <div class="install-cmd">$ hermes skill install hermes-agent</div>
-    </div>
-    
-    <div class="skill-card" data-name="codex" data-category="uncategorized">
-        <h3>codex</h3>
-        <p>Delegate coding to OpenAI Codex CLI (features, PRs).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Coding-Agent</span><span class="tag">#Codex</span><span class="tag">#OpenAI</span><span class="tag">#Code-Review</span><span class="tag">#Refactoring</span>
-        <div class="install-cmd">$ hermes skill install codex</div>
-    </div>
-    
-    <div class="skill-card" data-name="obsidian" data-category="uncategorized">
-        <h3>obsidian</h3>
-        <p>Read, search, create, and edit notes in the Obsidian vault.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="apple-notes" data-category="uncategorized">
+            <h3><a href="skills/apple-notes.html">apple-notes</a></h3>
+            <p class="description">Manage Apple Notes via memo CLI: create, search, edit....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install obsidian</div>
-    </div>
-    
-    <div class="skill-card" data-name="openhue" data-category="uncategorized">
-        <h3>openhue</h3>
-        <p>Control Philips Hue lights, scenes, rooms via OpenHue CLI.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ community</span>
-        </div>
-        <span class="tag">#Smart-Home</span><span class="tag">#Hue</span><span class="tag">#Lights</span><span class="tag">#IoT</span><span class="tag">#Automation</span>
-        <div class="install-cmd">$ hermes skill install openhue</div>
-    </div>
-    
-    <div class="skill-card" data-name="native-mcp" data-category="uncategorized">
-        <h3>native-mcp</h3>
-        <p>MCP client: connect servers, register tools (stdio/HTTP).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#MCP</span><span class="tag">#Tools</span><span class="tag">#Integrations</span>
-        <div class="install-cmd">$ hermes skill install native-mcp</div>
-    </div>
-    
-    <div class="skill-card" data-name="ocr-and-documents" data-category="uncategorized">
-        <h3>ocr-and-documents</h3>
-        <p>Extract text from PDFs/scans (pymupdf, marker-pdf).</p>
-        <div class="skill-meta">
-            <span>📦 v2.3.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#PDF</span><span class="tag">#Documents</span><span class="tag">#Research</span><span class="tag">#Arxiv</span><span class="tag">#Text-Extraction</span>
-        <div class="install-cmd">$ hermes skill install ocr-and-documents</div>
-    </div>
-    
-    <div class="skill-card" data-name="powerpoint" data-category="uncategorized">
-        <h3>powerpoint</h3>
-        <p>Create, read, edit .pptx decks, slides, notes, templates.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="apple-reminders" data-category="uncategorized">
+            <h3><a href="skills/apple-reminders.html">apple-reminders</a></h3>
+            <p class="description">Apple Reminders via remindctl: add, list, complete....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install powerpoint</div>
-    </div>
-    
-    <div class="skill-card" data-name="linear" data-category="uncategorized">
-        <h3>linear</h3>
-        <p>Linear: manage issues, projects, teams via GraphQL + curl.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Linear</span><span class="tag">#Project Management</span><span class="tag">#Issues</span><span class="tag">#GraphQL</span><span class="tag">#API</span>
-        <div class="install-cmd">$ hermes skill install linear</div>
-    </div>
-    
-    <div class="skill-card" data-name="google-workspace" data-category="uncategorized">
-        <h3>google-workspace</h3>
-        <p>Google OAuth2 client credentials (downloaded from Google Cloud Console)</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Nous Research</span>
-        </div>
-        <span class="tag">#Google</span><span class="tag">#Gmail</span><span class="tag">#Calendar</span><span class="tag">#Drive</span><span class="tag">#Sheets</span>
-        <div class="install-cmd">$ hermes skill install google-workspace</div>
-    </div>
-    
-    <div class="skill-card" data-name="airtable" data-category="uncategorized">
-        <h3>airtable</h3>
-        <p>Airtable REST API via curl. Records CRUD, filters, upserts.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ community</span>
-        </div>
-        <span class="tag">#Airtable</span><span class="tag">#Productivity</span><span class="tag">#Database</span><span class="tag">#API</span>
-        <div class="install-cmd">$ hermes skill install airtable</div>
-    </div>
-    
-    <div class="skill-card" data-name="notion" data-category="uncategorized">
-        <h3>notion</h3>
-        <p>Notion API + ntn CLI: pages, databases, markdown, Workers.</p>
-        <div class="skill-meta">
-            <span>📦 v2.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ community</span>
-        </div>
-        <span class="tag">#Notion</span><span class="tag">#Productivity</span><span class="tag">#Notes</span><span class="tag">#Database</span><span class="tag">#API</span>
-        <div class="install-cmd">$ hermes skill install notion</div>
-    </div>
-    
-    <div class="skill-card" data-name="maps" data-category="productivity">
-        <h3>maps</h3>
-        <p>Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.</p>
-        <div class="skill-meta">
-            <span>📦 v1.2.0</span>
-            <span>📂 productivity</span>
-            <span>✍️ Mibayy</span>
-        </div>
-        <span class="tag">#maps</span><span class="tag">#geocoding</span><span class="tag">#places</span><span class="tag">#routing</span><span class="tag">#distance</span>
-        <div class="install-cmd">$ hermes skill install maps</div>
-    </div>
-    
-    <div class="skill-card" data-name="nano-pdf" data-category="uncategorized">
-        <h3>nano-pdf</h3>
-        <p>Edit PDF text/typos/titles via nano-pdf CLI (NL prompts).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ community</span>
-        </div>
-        <span class="tag">#PDF</span><span class="tag">#Documents</span><span class="tag">#Editing</span><span class="tag">#NLP</span><span class="tag">#Productivity</span>
-        <div class="install-cmd">$ hermes skill install nano-pdf</div>
-    </div>
-    
-    <div class="skill-card" data-name="teams-meeting-pipeline" data-category="uncategorized">
-        <h3>teams-meeting-pipeline</h3>
-        <p>Operate the Teams meeting summary pipeline via Hermes CLI — summarize meetings, inspect pipeline status, replay jobs, manage Microsoft Graph subscriptions.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent + Teknium</span>
-        </div>
-        <span class="tag">#Teams</span><span class="tag">#Microsoft Graph</span><span class="tag">#Meetings</span><span class="tag">#Productivity</span><span class="tag">#Operations</span>
-        <div class="install-cmd">$ hermes skill install teams-meeting-pipeline</div>
-    </div>
-    
-    <div class="skill-card" data-name="webhook-subscriptions" data-category="uncategorized">
-        <h3>webhook-subscriptions</h3>
-        <p>Webhook subscriptions: event-driven agent runs.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#webhook</span><span class="tag">#events</span><span class="tag">#automation</span><span class="tag">#integrations</span><span class="tag">#notifications</span>
-        <div class="install-cmd">$ hermes skill install webhook-subscriptions</div>
-    </div>
-    
-    <div class="skill-card" data-name="kanban-worker" data-category="uncategorized">
-        <h3>kanban-worker</h3>
-        <p>Pitfalls, examples, and edge cases for Hermes Kanban workers. The lifecycle itself is auto-injected into every worker's system prompt as KANBAN_GUIDANCE (from agent/prompt_builder.py); this skill is what you load when you want deeper detail on specific scenarios.</p>
-        <div class="skill-meta">
-            <span>📦 v2.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#kanban</span><span class="tag">#multi-agent</span><span class="tag">#collaboration</span><span class="tag">#workflow</span><span class="tag">#pitfalls</span>
-        <div class="install-cmd">$ hermes skill install kanban-worker</div>
-    </div>
-    
-    <div class="skill-card" data-name="skill-hub-management" data-category="devops">
-        <h3>skill-hub-management</h3>
-        <p>管理 Hermes Skill Hub - 技能索引站的创建、维护、数据同步和社区运营</p>
-        <div class="skill-meta">
-            <span>📦 v1.0</span>
-            <span>📂 devops</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="architecture-diagram" data-category="uncategorized">
+            <h3><a href="skills/architecture-diagram.html">architecture-diagram</a></h3>
+            <p class="description">Dark-themed SVG architecture/cloud/infra diagrams as HTML....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install skill-hub-management</div>
-    </div>
-    
-    <div class="skill-card" data-name="kanban-orchestrator" data-category="uncategorized">
-        <h3>kanban-orchestrator</h3>
-        <p>Decomposition playbook + anti-temptation rules for an orchestrator profile routing work through Kanban. The "don't do the work yourself" rule and the basic lifecycle are auto-injected into every kanban worker's system prompt; this skill is the deeper playbook when you're specifically playing the orchestrator role.</p>
-        <div class="skill-meta">
-            <span>📦 v3.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#kanban</span><span class="tag">#multi-agent</span><span class="tag">#orchestration</span><span class="tag">#routing</span>
-        <div class="install-cmd">$ hermes skill install kanban-orchestrator</div>
-    </div>
-    
-    <div class="skill-card" data-name="test-driven-development" data-category="uncategorized">
-        <h3>test-driven-development</h3>
-        <p>TDD: enforce RED-GREEN-REFACTOR, tests before code.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent (adapted from obra/superpowers)</span>
-        </div>
-        <span class="tag">#testing</span><span class="tag">#tdd</span><span class="tag">#development</span><span class="tag">#quality</span><span class="tag">#red-green-refactor</span>
-        <div class="install-cmd">$ hermes skill install test-driven-development</div>
-    </div>
-    
-    <div class="skill-card" data-name="debugging-hermes-tui-commands" data-category="uncategorized">
-        <h3>debugging-hermes-tui-commands</h3>
-        <p>Debug Hermes TUI slash commands: Python, gateway, Ink UI.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#debugging</span><span class="tag">#hermes-agent</span><span class="tag">#tui</span><span class="tag">#slash-commands</span><span class="tag">#typescript</span>
-        <div class="install-cmd">$ hermes skill install debugging-hermes-tui-commands</div>
-    </div>
-    
-    <div class="skill-card" data-name="writing-plans" data-category="uncategorized">
-        <h3>writing-plans</h3>
-        <p>Write implementation plans: bite-sized tasks, paths, code.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent (adapted from obra/superpowers)</span>
-        </div>
-        <span class="tag">#planning</span><span class="tag">#design</span><span class="tag">#implementation</span><span class="tag">#workflow</span><span class="tag">#documentation</span>
-        <div class="install-cmd">$ hermes skill install writing-plans</div>
-    </div>
-    
-    <div class="skill-card" data-name="hermes-s6-container-supervision" data-category="uncategorized">
-        <h3>hermes-s6-container-supervision</h3>
-        <p>Modify, debug, or extend the s6-overlay supervision tree inside the Hermes Agent Docker image — adding new services, debugging profile gateways, understanding the Architecture B main-program pattern.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#docker</span><span class="tag">#s6</span><span class="tag">#supervision</span><span class="tag">#gateway</span><span class="tag">#profiles</span>
-        <div class="install-cmd">$ hermes skill install hermes-s6-container-supervision</div>
-    </div>
-    
-    <div class="skill-card" data-name="python-debugpy" data-category="uncategorized">
-        <h3>python-debugpy</h3>
-        <p>Debug Python: pdb REPL + debugpy remote (DAP).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#debugging</span><span class="tag">#python</span><span class="tag">#pdb</span><span class="tag">#debugpy</span><span class="tag">#breakpoints</span>
-        <div class="install-cmd">$ hermes skill install python-debugpy</div>
-    </div>
-    
-    <div class="skill-card" data-name="systematic-debugging" data-category="uncategorized">
-        <h3>systematic-debugging</h3>
-        <p>4-phase root cause debugging: understand bugs before fixing.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent (adapted from obra/superpowers)</span>
-        </div>
-        <span class="tag">#debugging</span><span class="tag">#troubleshooting</span><span class="tag">#problem-solving</span><span class="tag">#root-cause</span><span class="tag">#investigation</span>
-        <div class="install-cmd">$ hermes skill install systematic-debugging</div>
-    </div>
-    
-    <div class="skill-card" data-name="spike" data-category="uncategorized">
-        <h3>spike</h3>
-        <p>Throwaway experiments to validate an idea before build.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent (adapted from gsd-build/get-shit-done)</span>
-        </div>
-        <span class="tag">#spike</span><span class="tag">#prototype</span><span class="tag">#experiment</span><span class="tag">#feasibility</span><span class="tag">#throwaway</span>
-        <div class="install-cmd">$ hermes skill install spike</div>
-    </div>
-    
-    <div class="skill-card" data-name="subagent-driven-development" data-category="uncategorized">
-        <h3>subagent-driven-development</h3>
-        <p>Execute plans via delegate_task subagents (2-stage review).</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent (adapted from obra/superpowers)</span>
-        </div>
-        <span class="tag">#delegation</span><span class="tag">#subagent</span><span class="tag">#implementation</span><span class="tag">#workflow</span><span class="tag">#parallel</span>
-        <div class="install-cmd">$ hermes skill install subagent-driven-development</div>
-    </div>
-    
-    <div class="skill-card" data-name="requesting-code-review" data-category="uncategorized">
-        <h3>requesting-code-review</h3>
-        <p>Pre-commit review: security scan, quality gates, auto-fix.</p>
-        <div class="skill-meta">
-            <span>📦 v2.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent (adapted from obra/superpowers + MorAlekss)</span>
-        </div>
-        <span class="tag">#code-review</span><span class="tag">#security</span><span class="tag">#verification</span><span class="tag">#quality</span><span class="tag">#pre-commit</span>
-        <div class="install-cmd">$ hermes skill install requesting-code-review</div>
-    </div>
-    
-    <div class="skill-card" data-name="hermes-agent-skill-authoring" data-category="uncategorized">
-        <h3>hermes-agent-skill-authoring</h3>
-        <p>Author in-repo SKILL.md: frontmatter, validator, structure.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#skills</span><span class="tag">#authoring</span><span class="tag">#hermes-agent</span><span class="tag">#conventions</span><span class="tag">#skill-md</span>
-        <div class="install-cmd">$ hermes skill install hermes-agent-skill-authoring</div>
-    </div>
-    
-    <div class="skill-card" data-name="plan" data-category="uncategorized">
-        <h3>plan</h3>
-        <p>Plan mode: write markdown plan to .hermes/plans/, no exec.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#planning</span><span class="tag">#plan-mode</span><span class="tag">#implementation</span><span class="tag">#workflow</span>
-        <div class="install-cmd">$ hermes skill install plan</div>
-    </div>
-    
-    <div class="skill-card" data-name="node-inspect-debugger" data-category="uncategorized">
-        <h3>node-inspect-debugger</h3>
-        <p>Debug Node.js via --inspect + Chrome DevTools Protocol CLI.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#debugging</span><span class="tag">#nodejs</span><span class="tag">#node-inspect</span><span class="tag">#cdp</span><span class="tag">#breakpoints</span>
-        <div class="install-cmd">$ hermes skill install node-inspect-debugger</div>
-    </div>
-    
-    <div class="skill-card" data-name="godmode" data-category="uncategorized">
-        <h3>godmode</h3>
-        <p>Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent + Teknium</span>
-        </div>
-        <span class="tag">#jailbreak</span><span class="tag">#red-teaming</span><span class="tag">#G0DM0D3</span><span class="tag">#Parseltongue</span><span class="tag">#GODMODE</span>
-        <div class="install-cmd">$ hermes skill install godmode</div>
-    </div>
-    
-    <div class="skill-card" data-name="himalaya" data-category="uncategorized">
-        <h3>himalaya</h3>
-        <p>Himalaya CLI: IMAP/SMTP email from terminal.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ community</span>
-        </div>
-        <span class="tag">#Email</span><span class="tag">#IMAP</span><span class="tag">#SMTP</span><span class="tag">#CLI</span><span class="tag">#Communication</span>
-        <div class="install-cmd">$ hermes skill install himalaya</div>
-    </div>
-    
-    <div class="skill-card" data-name="minecraft-modpack-server" data-category="uncategorized">
-        <h3>minecraft-modpack-server</h3>
-        <p>Host modded Minecraft servers (CurseForge, Modrinth).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#minecraft</span><span class="tag">#gaming</span><span class="tag">#server</span><span class="tag">#neoforge</span><span class="tag">#forge</span>
-        <div class="install-cmd">$ hermes skill install minecraft-modpack-server</div>
-    </div>
-    
-    <div class="skill-card" data-name="pokemon-player" data-category="uncategorized">
-        <h3>pokemon-player</h3>
-        <p>Play Pokemon via headless emulator + RAM reads.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#gaming</span><span class="tag">#pokemon</span><span class="tag">#emulator</span><span class="tag">#pyboy</span><span class="tag">#gameplay</span>
-        <div class="install-cmd">$ hermes skill install pokemon-player</div>
-    </div>
-    
-    <div class="skill-card" data-name="baoyu-comic" data-category="uncategorized">
-        <h3>baoyu-comic</h3>
-        <p>Knowledge comics (知识漫画): educational, biography, tutorial.</p>
-        <div class="skill-meta">
-            <span>📦 v1.56.1</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ 宝玉 (JimLiu)</span>
-        </div>
-        <span class="tag">#comic</span><span class="tag">#knowledge-comic</span><span class="tag">#creative</span><span class="tag">#image-generation</span>
-        <div class="install-cmd">$ hermes skill install baoyu-comic</div>
-    </div>
-    
-    <div class="skill-card" data-name="pretext" data-category="uncategorized">
-        <h3>pretext</h3>
-        <p>Use when building creative browser demos with @chenglou/pretext — DOM-free text layout for ASCII art, typographic flow around obstacles, text-as-geometry games, kinetic typography, and text-powered generative art. Produces single-file HTML demos by default.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#creative-coding</span><span class="tag">#typography</span><span class="tag">#pretext</span><span class="tag">#ascii-art</span><span class="tag">#canvas</span>
-        <div class="install-cmd">$ hermes skill install pretext</div>
-    </div>
-    
-    <div class="skill-card" data-name="design-md" data-category="uncategorized">
-        <h3>design-md</h3>
-        <p>Author/validate/export Google's DESIGN.md token spec files.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#design</span><span class="tag">#design-system</span><span class="tag">#tokens</span><span class="tag">#ui</span><span class="tag">#accessibility</span>
-        <div class="install-cmd">$ hermes skill install design-md</div>
-    </div>
-    
-    <div class="skill-card" data-name="popular-web-designs" data-category="uncategorized">
-        <h3>popular-web-designs</h3>
-        <p>54 real design systems (Stripe, Linear, Vercel) as HTML/CSS.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent + Teknium (design systems sourced from VoltAgent/awesome-design-md)</span>
-        </div>
-        <span class="tag">#design</span><span class="tag">#css</span><span class="tag">#html</span><span class="tag">#ui</span><span class="tag">#web-development</span>
-        <div class="install-cmd">$ hermes skill install popular-web-designs</div>
-    </div>
-    
-    <div class="skill-card" data-name="baoyu-article-illustrator" data-category="creative">
-        <h3>baoyu-article-illustrator</h3>
-        <p>Article illustrations: type × style × palette consistency.</p>
-        <div class="skill-meta">
-            <span>📦 v1.57.0</span>
-            <span>📂 creative</span>
-            <span>✍️ 宝玉 (JimLiu)</span>
-        </div>
-        <span class="tag">#article-illustration</span><span class="tag">#creative</span><span class="tag">#image-generation</span>
-        <div class="install-cmd">$ hermes skill install baoyu-article-illustrator</div>
-    </div>
-    
-    <div class="skill-card" data-name="p5js" data-category="uncategorized">
-        <h3>p5js</h3>
-        <p>p5.js sketches: gen art, shaders, interactive, 3D.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#creative-coding</span><span class="tag">#generative-art</span><span class="tag">#p5js</span><span class="tag">#canvas</span><span class="tag">#interactive</span>
-        <div class="install-cmd">$ hermes skill install p5js</div>
-    </div>
-    
-    <div class="skill-card" data-name="touchdesigner-mcp" data-category="uncategorized">
-        <h3>touchdesigner-mcp</h3>
-        <p>Control a running TouchDesigner instance via twozero MCP — create operators, set parameters, wire connections, execute Python, build real-time visuals. 36 native tools.</p>
-        <div class="skill-meta">
-            <span>📦 v1.1.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ kshitijk4poor</span>
-        </div>
-        <span class="tag">#TouchDesigner</span><span class="tag">#MCP</span><span class="tag">#twozero</span><span class="tag">#creative-coding</span><span class="tag">#real-time-visuals</span>
-        <div class="install-cmd">$ hermes skill install touchdesigner-mcp</div>
-    </div>
-    
-    <div class="skill-card" data-name="manim-video" data-category="uncategorized">
-        <h3>manim-video</h3>
-        <p>Manim CE animations: 3Blue1Brown math/algo videos.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="arxiv" data-category="uncategorized">
+            <h3><a href="skills/arxiv.html">arxiv</a></h3>
+            <p class="description">Search arXiv papers by keyword, author, category, or ID....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install manim-video</div>
-    </div>
-    
-    <div class="skill-card" data-name="ideation" data-category="creative">
-        <h3>ideation</h3>
-        <p>Generate project ideas via creative constraints.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 creative</span>
-            <span>✍️ SHL0MS</span>
-        </div>
-        <span class="tag">#Creative</span><span class="tag">#Ideation</span><span class="tag">#Projects</span><span class="tag">#Brainstorming</span><span class="tag">#Inspiration</span>
-        <div class="install-cmd">$ hermes skill install ideation</div>
-    </div>
-    
-    <div class="skill-card" data-name="excalidraw" data-category="uncategorized">
-        <h3>excalidraw</h3>
-        <p>Hand-drawn Excalidraw JSON diagrams (arch, flow, seq).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent</span>
-        </div>
-        <span class="tag">#Excalidraw</span><span class="tag">#Diagrams</span><span class="tag">#Flowcharts</span><span class="tag">#Architecture</span><span class="tag">#Visualization</span>
-        <div class="install-cmd">$ hermes skill install excalidraw</div>
-    </div>
-    
-    <div class="skill-card" data-name="pixel-art" data-category="creative">
-        <h3>pixel-art</h3>
-        <p>Pixel art w/ era palettes (NES, Game Boy, PICO-8).</p>
-        <div class="skill-meta">
-            <span>📦 v2.0.0</span>
-            <span>📂 creative</span>
-            <span>✍️ dodo-reach</span>
-        </div>
-        <span class="tag">#creative</span><span class="tag">#pixel-art</span><span class="tag">#arcade</span><span class="tag">#snes</span><span class="tag">#nes</span>
-        <div class="install-cmd">$ hermes skill install pixel-art</div>
-    </div>
-    
-    <div class="skill-card" data-name="architecture-diagram" data-category="uncategorized">
-        <h3>architecture-diagram</h3>
-        <p>Dark-themed SVG architecture/cloud/infra diagrams as HTML.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Cocoon AI (hello@cocoon-ai.com), ported by Hermes Agent</span>
-        </div>
-        <span class="tag">#architecture</span><span class="tag">#diagrams</span><span class="tag">#SVG</span><span class="tag">#HTML</span><span class="tag">#visualization</span>
-        <div class="install-cmd">$ hermes skill install architecture-diagram</div>
-    </div>
-    
-    <div class="skill-card" data-name="humanizer" data-category="creative">
-        <h3>humanizer</h3>
-        <p>Humanize text: strip AI-isms and add real voice.</p>
-        <div class="skill-meta">
-            <span>📦 v2.5.1</span>
-            <span>📂 creative</span>
-            <span>✍️ Siqi Chen (@blader, https://github.com/blader/humanizer), ported by Hermes Agent</span>
-        </div>
-        <span class="tag">#writing</span><span class="tag">#editing</span><span class="tag">#humanize</span><span class="tag">#anti-ai-slop</span><span class="tag">#voice</span>
-        <div class="install-cmd">$ hermes skill install humanizer</div>
-    </div>
-    
-    <div class="skill-card" data-name="comfyui" data-category="creative">
-        <h3>comfyui</h3>
-        <p>Generate images, video, and audio with ComfyUI — install, launch, manage nodes/models, run workflows with parameter injection. Uses the official comfy-cli for lifecycle and direct REST/WebSocket API for execution.</p>
-        <div class="skill-meta">
-            <span>📦 v5.1.0</span>
-            <span>📂 creative</span>
-            <span>✍️ ['kshitijk4poor', 'alt-glitch', 'purzbeats']</span>
+        <div class="skill-card" data-name="ascii-art" data-category="uncategorized">
+            <h3><a href="skills/ascii-art.html">ascii-art</a></h3>
+            <p class="description">ASCII art: pyfiglet, cowsay, boxes, image-to-ascii....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v4.0.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install comfyui</div>
-    </div>
-    
-    <div class="skill-card" data-name="ascii-video" data-category="uncategorized">
-        <h3>ascii-video</h3>
-        <p>ASCII video: convert video/audio to colored ASCII MP4/GIF.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="ascii-video" data-category="uncategorized">
+            <h3><a href="skills/ascii-video.html">ascii-video</a></h3>
+            <p class="description">ASCII video: convert video/audio to colored ASCII MP4/GIF....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install ascii-video</div>
-    </div>
-    
-    <div class="skill-card" data-name="baoyu-infographic" data-category="uncategorized">
-        <h3>baoyu-infographic</h3>
-        <p>Infographics: 21 layouts x 21 styles (信息图, 可视化).</p>
-        <div class="skill-meta">
-            <span>📦 v1.56.1</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ 宝玉 (JimLiu)</span>
-        </div>
-        <span class="tag">#infographic</span><span class="tag">#visual-summary</span><span class="tag">#creative</span><span class="tag">#image-generation</span>
-        <div class="install-cmd">$ hermes skill install baoyu-infographic</div>
-    </div>
-    
-    <div class="skill-card" data-name="claude-design" data-category="uncategorized">
-        <h3>claude-design</h3>
-        <p>Design one-off HTML artifacts (landing, deck, prototype).</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ BadTechBandit</span>
-        </div>
-        <span class="tag">#design</span><span class="tag">#html</span><span class="tag">#prototype</span><span class="tag">#ux</span><span class="tag">#ui</span>
-        <div class="install-cmd">$ hermes skill install claude-design</div>
-    </div>
-    
-    <div class="skill-card" data-name="ascii-art" data-category="uncategorized">
-        <h3>ascii-art</h3>
-        <p>ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.</p>
-        <div class="skill-meta">
-            <span>📦 v4.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ 0xbyt4, Hermes Agent</span>
-        </div>
-        <span class="tag">#ASCII</span><span class="tag">#Art</span><span class="tag">#Banners</span><span class="tag">#Creative</span><span class="tag">#Unicode</span>
-        <div class="install-cmd">$ hermes skill install ascii-art</div>
-    </div>
-    
-    <div class="skill-card" data-name="sketch" data-category="uncategorized">
-        <h3>sketch</h3>
-        <p>Throwaway HTML mockups: 2-3 design variants to compare.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Hermes Agent (adapted from gsd-build/get-shit-done)</span>
-        </div>
-        <span class="tag">#sketch</span><span class="tag">#mockup</span><span class="tag">#design</span><span class="tag">#ui</span><span class="tag">#prototype</span>
-        <div class="install-cmd">$ hermes skill install sketch</div>
-    </div>
-    
-    <div class="skill-card" data-name="songwriting-and-ai-music" data-category="uncategorized">
-        <h3>songwriting-and-ai-music</h3>
-        <p>Songwriting craft and Suno AI music prompts.</p>
-        <div class="skill-meta">
-            <span>📦 v1.0.0</span>
-            <span>📂 uncategorized</span>
-            <span>✍️ Unknown</span>
-        </div>
-        <span class="tag">#songwriting</span><span class="tag">#music</span><span class="tag">#suno</span><span class="tag">#parody</span><span class="tag">#lyrics</span>
-        <div class="install-cmd">$ hermes skill install songwriting-and-ai-music</div>
-    </div>
-    
-    <div class="skill-card" data-name="notebook-smart-processing" data-category="productivity">
-        <h3>notebook-smart-processing</h3>
-        <p>随手记智能处理系统 - 将日常想法转化为系统化的知识资产（记忆/技能/操作/结果/创新）</p>
-        <div class="skill-meta">
-            <span>📦 v2.0</span>
-            <span>📂 productivity</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="audiocraft-audio-generation" data-category="uncategorized">
+            <h3><a href="skills/audiocraft-audio-generation.html">audiocraft-audio-generation</a></h3>
+            <p class="description">AudioCraft: MusicGen text-to-music, AudioGen text-to-sound....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install notebook-smart-processing</div>
-    </div>
-    
-    <div class="skill-card" data-name="notebook-daily-processor" data-category="productivity">
-        <h3>notebook-daily-processor</h3>
-        <p>每日随手记智能处理 - 用语义理解分析、分类、总结用户的随手记</p>
-        <div class="skill-meta">
-            <span>📦 v2.0</span>
-            <span>📂 productivity</span>
-            <span>✍️ Unknown</span>
+        <div class="skill-card" data-name="baoyu-infographic" data-category="uncategorized">
+            <h3><a href="skills/baoyu-infographic.html">baoyu-infographic</a></h3>
+            <p class="description">Infographics: 21 layouts x 21 styles (信息图, 可视化)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.56.1</span>
+            </div>
         </div>
         
-        <div class="install-cmd">$ hermes skill install notebook-daily-processor</div>
-    </div>
-    
+        <div class="skill-card" data-name="blogwatcher" data-category="uncategorized">
+            <h3><a href="skills/blogwatcher.html">blogwatcher</a></h3>
+            <p class="description">Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.0.0</span>
+            </div>
         </div>
-    </div>
-    
+        
+        <div class="skill-card" data-name="claude-code" data-category="uncategorized">
+            <h3><a href="skills/claude-code.html">claude-code</a></h3>
+            <p class="description">Delegate coding to Claude Code CLI (features, PRs)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.2.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="claude-design" data-category="uncategorized">
+            <h3><a href="skills/claude-design.html">claude-design</a></h3>
+            <p class="description">Design one-off HTML artifacts (landing, deck, prototype)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="codebase-inspection" data-category="uncategorized">
+            <h3><a href="skills/codebase-inspection.html">codebase-inspection</a></h3>
+            <p class="description">Inspect codebases w/ pygount: LOC, languages, ratios....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="codex" data-category="uncategorized">
+            <h3><a href="skills/codex.html">codex</a></h3>
+            <p class="description">Delegate coding to OpenAI Codex CLI (features, PRs)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="comfyui" data-category="creative">
+            <h3><a href="skills/comfyui.html">comfyui</a></h3>
+            <p class="description">Generate images, video, and audio with ComfyUI — install, launch, manage nodes/models, run workflows with parameter inje...</p>
+            <div class="meta">
+                <span class="category">creative</span>
+                <span class="version">v5.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="design-md" data-category="uncategorized">
+            <h3><a href="skills/design-md.html">design-md</a></h3>
+            <p class="description">Author/validate/export Google's DESIGN.md token spec files....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="dogfood" data-category="uncategorized">
+            <h3><a href="skills/dogfood.html">dogfood</a></h3>
+            <p class="description">Exploratory QA of web apps: find bugs, evidence, reports....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="evaluating-llms-harness" data-category="uncategorized">
+            <h3><a href="skills/evaluating-llms-harness.html">evaluating-llms-harness</a></h3>
+            <p class="description">lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="excalidraw" data-category="uncategorized">
+            <h3><a href="skills/excalidraw.html">excalidraw</a></h3>
+            <p class="description">Hand-drawn Excalidraw JSON diagrams (arch, flow, seq)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="findmy" data-category="uncategorized">
+            <h3><a href="skills/findmy.html">findmy</a></h3>
+            <p class="description">Track Apple devices/AirTags via FindMy.app on macOS....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="gif-search" data-category="uncategorized">
+            <h3><a href="skills/gif-search.html">gif-search</a></h3>
+            <p class="description">Search/download GIFs from Tenor via curl + jq....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="github-auth" data-category="uncategorized">
+            <h3><a href="skills/github-auth.html">github-auth</a></h3>
+            <p class="description">GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="github-code-review" data-category="uncategorized">
+            <h3><a href="skills/github-code-review.html">github-code-review</a></h3>
+            <p class="description">Review PRs: diffs, inline comments via gh or REST....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="github-issues" data-category="uncategorized">
+            <h3><a href="skills/github-issues.html">github-issues</a></h3>
+            <p class="description">Create, triage, label, assign GitHub issues via gh or REST....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="github-pr-workflow" data-category="uncategorized">
+            <h3><a href="skills/github-pr-workflow.html">github-pr-workflow</a></h3>
+            <p class="description">GitHub PR lifecycle: branch, commit, open, CI, merge....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="github-repo-management" data-category="uncategorized">
+            <h3><a href="skills/github-repo-management.html">github-repo-management</a></h3>
+            <p class="description">Clone/create/fork repos; manage remotes, releases....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="godmode" data-category="uncategorized">
+            <h3><a href="skills/godmode.html">godmode</a></h3>
+            <p class="description">Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="google-workspace" data-category="uncategorized">
+            <h3><a href="skills/google-workspace.html">google-workspace</a></h3>
+            <p class="description">Google OAuth2 client credentials (downloaded from Google Cloud Console)...</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="heartmula" data-category="uncategorized">
+            <h3><a href="skills/heartmula.html">heartmula</a></h3>
+            <p class="description">HeartMuLa: Suno-like song generation from lyrics + tags....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="hermes-agent" data-category="uncategorized">
+            <h3><a href="skills/hermes-agent.html">hermes-agent</a></h3>
+            <p class="description">Configure, extend, or contribute to Hermes Agent....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="hermes-agent-skill-authoring" data-category="uncategorized">
+            <h3><a href="skills/hermes-agent-skill-authoring.html">hermes-agent-skill-authoring</a></h3>
+            <p class="description">Author in-repo SKILL.md: frontmatter, validator, structure....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="himalaya" data-category="uncategorized">
+            <h3><a href="skills/himalaya.html">himalaya</a></h3>
+            <p class="description">Himalaya CLI: IMAP/SMTP email from terminal....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="huggingface-hub" data-category="uncategorized">
+            <h3><a href="skills/huggingface-hub.html">huggingface-hub</a></h3>
+            <p class="description">HuggingFace hf CLI: search/download/upload models, datasets....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="humanizer" data-category="creative">
+            <h3><a href="skills/humanizer.html">humanizer</a></h3>
+            <p class="description">Humanize text: strip AI-isms and add real voice....</p>
+            <div class="meta">
+                <span class="category">creative</span>
+                <span class="version">v2.5.1</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="imessage" data-category="uncategorized">
+            <h3><a href="skills/imessage.html">imessage</a></h3>
+            <p class="description">Send and receive iMessages/SMS via the imsg CLI on macOS....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="jupyter-live-kernel" data-category="data-science">
+            <h3><a href="skills/jupyter-live-kernel.html">jupyter-live-kernel</a></h3>
+            <p class="description">Iterative Python via live Jupyter kernel (hamelnb)....</p>
+            <div class="meta">
+                <span class="category">data-science</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="kanban-orchestrator" data-category="uncategorized">
+            <h3><a href="skills/kanban-orchestrator.html">kanban-orchestrator</a></h3>
+            <p class="description">Decomposition playbook + anti-temptation rules for an orchestrator profile routing work through Kanban. The "don't do th...</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v3.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="kanban-worker" data-category="uncategorized">
+            <h3><a href="skills/kanban-worker.html">kanban-worker</a></h3>
+            <p class="description">Pitfalls, examples, and edge cases for Hermes Kanban workers. The lifecycle itself is auto-injected into every worker's ...</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="llama-cpp" data-category="uncategorized">
+            <h3><a href="skills/llama-cpp.html">llama-cpp</a></h3>
+            <p class="description">llama.cpp local GGUF inference + HF Hub model discovery....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.1.2</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="llm-wiki" data-category="research">
+            <h3><a href="skills/llm-wiki.html">llm-wiki</a></h3>
+            <p class="description">Karpathy's LLM Wiki: build/query interlinked markdown KB....</p>
+            <div class="meta">
+                <span class="category">research</span>
+                <span class="version">v2.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="macos-computer-use" data-category="desktop">
+            <h3><a href="skills/macos-computer-use.html">macos-computer-use</a></h3>
+            <p class="description">|...</p>
+            <div class="meta">
+                <span class="category">desktop</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="manim-video" data-category="uncategorized">
+            <h3><a href="skills/manim-video.html">manim-video</a></h3>
+            <p class="description">Manim CE animations: 3Blue1Brown math/algo videos....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="maps" data-category="productivity">
+            <h3><a href="skills/maps.html">maps</a></h3>
+            <p class="description">Geocode, POIs, routes, timezones via OpenStreetMap/OSRM....</p>
+            <div class="meta">
+                <span class="category">productivity</span>
+                <span class="version">v1.2.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="nano-pdf" data-category="uncategorized">
+            <h3><a href="skills/nano-pdf.html">nano-pdf</a></h3>
+            <p class="description">Edit PDF text/typos/titles via nano-pdf CLI (NL prompts)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="node-inspect-debugger" data-category="uncategorized">
+            <h3><a href="skills/node-inspect-debugger.html">node-inspect-debugger</a></h3>
+            <p class="description">Debug Node.js via --inspect + Chrome DevTools Protocol CLI....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="notion" data-category="uncategorized">
+            <h3><a href="skills/notion.html">notion</a></h3>
+            <p class="description">Notion API + ntn CLI: pages, databases, markdown, Workers....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="obliteratus" data-category="uncategorized">
+            <h3><a href="skills/obliteratus.html">obliteratus</a></h3>
+            <p class="description">OBLITERATUS: abliterate LLM refusals (diff-in-means)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="obsidian" data-category="uncategorized">
+            <h3><a href="skills/obsidian.html">obsidian</a></h3>
+            <p class="description">Read, search, create, and edit notes in the Obsidian vault....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="ocr-and-documents" data-category="uncategorized">
+            <h3><a href="skills/ocr-and-documents.html">ocr-and-documents</a></h3>
+            <p class="description">Extract text from PDFs/scans (pymupdf, marker-pdf)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.3.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="opencode" data-category="uncategorized">
+            <h3><a href="skills/opencode.html">opencode</a></h3>
+            <p class="description">Delegate coding to OpenCode CLI (features, PR review)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.2.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="openhue" data-category="uncategorized">
+            <h3><a href="skills/openhue.html">openhue</a></h3>
+            <p class="description">Control Philips Hue lights, scenes, rooms via OpenHue CLI....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="p5js" data-category="uncategorized">
+            <h3><a href="skills/p5js.html">p5js</a></h3>
+            <p class="description">p5.js sketches: gen art, shaders, interactive, 3D....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="plan" data-category="uncategorized">
+            <h3><a href="skills/plan.html">plan</a></h3>
+            <p class="description">Plan mode: write an actionable markdown plan to .hermes/plans/, no execution. Bite-sized tasks, exact paths, complete co...</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="polymarket" data-category="uncategorized">
+            <h3><a href="skills/polymarket.html">polymarket</a></h3>
+            <p class="description">Query Polymarket: markets, prices, orderbooks, history....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="popular-web-designs" data-category="uncategorized">
+            <h3><a href="skills/popular-web-designs.html">popular-web-designs</a></h3>
+            <p class="description">54 real design systems (Stripe, Linear, Vercel) as HTML/CSS....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="powerpoint" data-category="uncategorized">
+            <h3><a href="skills/powerpoint.html">powerpoint</a></h3>
+            <p class="description">Create, read, edit .pptx decks, slides, notes, templates....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="pretext" data-category="uncategorized">
+            <h3><a href="skills/pretext.html">pretext</a></h3>
+            <p class="description">Use when building creative browser demos with @chenglou/pretext — DOM-free text layout for ASCII art, typographic flow a...</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="python-debugpy" data-category="uncategorized">
+            <h3><a href="skills/python-debugpy.html">python-debugpy</a></h3>
+            <p class="description">Debug Python: pdb REPL + debugpy remote (DAP)....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="requesting-code-review" data-category="uncategorized">
+            <h3><a href="skills/requesting-code-review.html">requesting-code-review</a></h3>
+            <p class="description">Pre-commit review: security scan, quality gates, auto-fix....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v2.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="research-paper-writing" data-category="research">
+            <h3><a href="skills/research-paper-writing.html">research-paper-writing</a></h3>
+            <p class="description">Write ML papers for NeurIPS/ICML/ICLR: design→submit....</p>
+            <div class="meta">
+                <span class="category">research</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="segment-anything-model" data-category="uncategorized">
+            <h3><a href="skills/segment-anything-model.html">segment-anything-model</a></h3>
+            <p class="description">SAM: zero-shot image segmentation via points, boxes, masks....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="serving-llms-vllm" data-category="uncategorized">
+            <h3><a href="skills/serving-llms-vllm.html">serving-llms-vllm</a></h3>
+            <p class="description">vLLM: high-throughput LLM serving, OpenAI API, quantization....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="sketch" data-category="uncategorized">
+            <h3><a href="skills/sketch.html">sketch</a></h3>
+            <p class="description">Throwaway HTML mockups: 2-3 design variants to compare....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="songsee" data-category="uncategorized">
+            <h3><a href="skills/songsee.html">songsee</a></h3>
+            <p class="description">Audio spectrograms/features (mel, chroma, MFCC) via CLI....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="songwriting-and-ai-music" data-category="uncategorized">
+            <h3><a href="skills/songwriting-and-ai-music.html">songwriting-and-ai-music</a></h3>
+            <p class="description">Songwriting craft and Suno AI music prompts....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="spike" data-category="uncategorized">
+            <h3><a href="skills/spike.html">spike</a></h3>
+            <p class="description">Throwaway experiments to validate an idea before build....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="systematic-debugging" data-category="uncategorized">
+            <h3><a href="skills/systematic-debugging.html">systematic-debugging</a></h3>
+            <p class="description">4-phase root cause debugging: understand bugs before fixing....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="teams-meeting-pipeline" data-category="uncategorized">
+            <h3><a href="skills/teams-meeting-pipeline.html">teams-meeting-pipeline</a></h3>
+            <p class="description">Operate the Teams meeting summary pipeline via Hermes CLI — summarize meetings, inspect pipeline status, replay jobs, ma...</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="test-driven-development" data-category="uncategorized">
+            <h3><a href="skills/test-driven-development.html">test-driven-development</a></h3>
+            <p class="description">TDD: enforce RED-GREEN-REFACTOR, tests before code....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="touchdesigner-mcp" data-category="uncategorized">
+            <h3><a href="skills/touchdesigner-mcp.html">touchdesigner-mcp</a></h3>
+            <p class="description">Control a running TouchDesigner instance via twozero MCP — create operators, set parameters, wire connections, execute P...</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="weights-and-biases" data-category="uncategorized">
+            <h3><a href="skills/weights-and-biases.html">weights-and-biases</a></h3>
+            <p class="description">W&B: log ML experiments, sweeps, model registry, dashboards....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="xurl" data-category="uncategorized">
+            <h3><a href="skills/xurl.html">xurl</a></h3>
+            <p class="description">X/Twitter via xurl CLI: post, search, DM, media, v2 API....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.1.1</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="youtube-content" data-category="uncategorized">
+            <h3><a href="skills/youtube-content.html">youtube-content</a></h3>
+            <p class="description">YouTube transcripts to summaries, threads, blogs....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        <div class="skill-card" data-name="yuanbao" data-category="uncategorized">
+            <h3><a href="skills/yuanbao.html">yuanbao</a></h3>
+            <p class="description">Yuanbao (元宝) groups: @mention users, query info/members....</p>
+            <div class="meta">
+                <span class="category">uncategorized</span>
+                <span class="version">v1.0.0</span>
+            </div>
+        </div>
+        
+        </div>
+        <div class="no-results" id="no-results" style="display: none;">
+            😕 未找到匹配的技能
+        </div>
+    </main>
+
     <footer>
-        <p>Built with ❤️ for Hermes Agent Community</p>
-        <p>共 91 个技能 | 最后更新：2026-06-06T13:14:12.382769</p>
+        <p>Hermes Skill Registry &copy; 2026</p>
+        <p>Powered by Cloudflare Pages</p>
     </footer>
-    
+
     <script>
-        function filterSkills() {
-            const search = document.getElementById('search').value.toLowerCase();
-            const cards = document.querySelectorAll('.skill-card');
+        // 搜索功能
+        const searchInput = document.getElementById('search');
+        const skillsGrid = document.getElementById('skills-grid');
+        const noResults = document.getElementById('no-results');
+        const cards = Array.from(document.querySelectorAll('.skill-card'));
+        
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
             
             cards.forEach(card => {
-                const name = card.dataset.name.toLowerCase();
-                const desc = card.textContent.toLowerCase();
-                card.style.display = (name.includes(search) || desc.includes(search)) ? 'block' : 'none';
+                const name = card.dataset.name;
+                const desc = card.querySelector('.description').textContent.toLowerCase();
+                const matches = name.includes(query) || desc.includes(query);
+                card.style.display = matches ? 'block' : 'none';
+                if (matches) visibleCount++;
             });
-        }
+            
+            skillsGrid.style.display = visibleCount > 0 ? 'grid' : 'none';
+            noResults.style.display = visibleCount > 0 ? 'none' : 'block';
+        });
         
-        document.querySelectorAll('.category-tag').forEach(tag => {
-            tag.addEventListener('click', function() {
-                document.querySelectorAll('.category-tag').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
+        // 分类筛选
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
                 
-                const cat = this.dataset.cat;
-                const cards = document.querySelectorAll('.skill-card');
-                
-                cards.forEach(card => {
-                    if (cat === 'all' || card.dataset.category === cat) {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                const category = btn.dataset.category;
+                if (category === 'all') {
+                    cards.forEach(card => card.style.display = 'block');
+                } else {
+                    cards.forEach(card => {
+                        card.style.display = card.dataset.category === category ? 'block' : 'none';
+                    });
+                }
             });
         });
     </script>

@@ -1,0 +1,8 @@
+{
+  "status": "built_locally",
+  "timestamp": "2026-06-06T14:43:24.791828",
+  "total_skills": 74,
+  "output_dir": "/userdata/hermes/profiles/skill-dev/projects/skill-registry-site/web",
+  "package": "/tmp/skill-registry-web.tar.gz",
+  "next_step": "手动上传到 Cloudflare Pages 或使用 wrangler pages deploy"
+}
