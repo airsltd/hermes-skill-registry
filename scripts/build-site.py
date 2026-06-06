@@ -454,6 +454,5 @@ def generate_skill_pages():
 print("🏗️ 开始构建网站...")
 generate_homepage()
 generate_skill_pages()
-print(f"
-✅ 网站构建完成!")
+print("\n✅ 网站构建完成!")
 print(f"📁 输出目录：{WEB_DIR}")
