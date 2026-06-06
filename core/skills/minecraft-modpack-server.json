@@ -1,0 +1,19 @@
+{
+  "name": "minecraft-modpack-server",
+  "display_name": "minecraft-modpack-server",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Host modded Minecraft servers (CurseForge, Modrinth).",
+  "trigger": "",
+  "tags": [
+    "minecraft",
+    "gaming",
+    "server",
+    "neoforge",
+    "forge",
+    "modpack"
+  ],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/gaming/minecraft-modpack-server",
+  "synced_at": "2026-06-06T13:14:12.305894"
+}

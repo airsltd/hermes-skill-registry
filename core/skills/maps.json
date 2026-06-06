@@ -1,0 +1,25 @@
+{
+  "name": "maps",
+  "display_name": "maps",
+  "version": "1.2.0",
+  "category": "productivity",
+  "description": "Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.",
+  "trigger": "",
+  "tags": [
+    "maps",
+    "geocoding",
+    "places",
+    "routing",
+    "distance",
+    "directions",
+    "nearby",
+    "location",
+    "openstreetmap",
+    "nominatim",
+    "overpass",
+    "osrm"
+  ],
+  "author": "Mibayy",
+  "source_path": "skill-test/skills/productivity/maps",
+  "synced_at": "2026-06-06T13:14:12.282521"
+}

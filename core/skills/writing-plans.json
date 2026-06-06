@@ -1,0 +1,18 @@
+{
+  "name": "writing-plans",
+  "display_name": "writing-plans",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Write implementation plans: bite-sized tasks, paths, code.",
+  "trigger": "",
+  "tags": [
+    "planning",
+    "design",
+    "implementation",
+    "workflow",
+    "documentation"
+  ],
+  "author": "Hermes Agent (adapted from obra/superpowers)",
+  "source_path": "skill-test/skills/software-development/writing-plans",
+  "synced_at": "2026-06-06T13:14:12.292252"
+}

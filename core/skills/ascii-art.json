@@ -1,0 +1,23 @@
+{
+  "name": "ascii-art",
+  "display_name": "ascii-art",
+  "version": "4.0.0",
+  "category": "uncategorized",
+  "description": "ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.",
+  "trigger": "",
+  "tags": [
+    "ASCII",
+    "Art",
+    "Banners",
+    "Creative",
+    "Unicode",
+    "Text-Art",
+    "pyfiglet",
+    "figlet",
+    "cowsay",
+    "boxes"
+  ],
+  "author": "0xbyt4, Hermes Agent",
+  "source_path": "skill-test/skills/creative/ascii-art",
+  "synced_at": "2026-06-06T13:14:12.340152"
+}

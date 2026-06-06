@@ -1,0 +1,12 @@
+{
+  "name": "ascii-video",
+  "display_name": "ascii-video",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "ASCII video: convert video/audio to colored ASCII MP4/GIF.",
+  "trigger": "",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/creative/ascii-video",
+  "synced_at": "2026-06-06T13:14:12.335949"
+}

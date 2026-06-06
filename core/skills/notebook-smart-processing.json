@@ -1,0 +1,12 @@
+{
+  "name": "notebook-smart-processing",
+  "display_name": "notebook-smart-processing",
+  "version": "2.0",
+  "category": "productivity",
+  "description": "随手记智能处理系统 - 将日常想法转化为系统化的知识资产（记忆/技能/操作/结果/创新）",
+  "trigger": "用户想要建立持续的个人知识管理系统，将零散想法转化为可执行的知识资产",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-dev/projects/notebook-system/notebook-smart-processing",
+  "synced_at": "2026-06-06T13:14:12.379945"
+}

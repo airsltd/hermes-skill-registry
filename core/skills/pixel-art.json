@@ -1,0 +1,22 @@
+{
+  "name": "pixel-art",
+  "display_name": "pixel-art",
+  "version": "2.0.0",
+  "category": "creative",
+  "description": "Pixel art w/ era palettes (NES, Game Boy, PICO-8).",
+  "trigger": "",
+  "tags": [
+    "creative",
+    "pixel-art",
+    "arcade",
+    "snes",
+    "nes",
+    "gameboy",
+    "retro",
+    "image",
+    "video"
+  ],
+  "author": "dodo-reach",
+  "source_path": "skill-test/skills/creative/pixel-art",
+  "synced_at": "2026-06-06T13:14:12.328218"
+}

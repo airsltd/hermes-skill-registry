@@ -1,0 +1,20 @@
+{
+  "name": "python-debugpy",
+  "display_name": "python-debugpy",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Debug Python: pdb REPL + debugpy remote (DAP).",
+  "trigger": "",
+  "tags": [
+    "debugging",
+    "python",
+    "pdb",
+    "debugpy",
+    "breakpoints",
+    "dap",
+    "post-mortem"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/software-development/python-debugpy",
+  "synced_at": "2026-06-06T13:14:12.294138"
+}

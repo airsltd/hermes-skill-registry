@@ -1,0 +1,12 @@
+{
+  "name": "obsidian",
+  "display_name": "obsidian",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Read, search, create, and edit notes in the Obsidian vault.",
+  "trigger": "",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/note-taking/obsidian",
+  "synced_at": "2026-06-06T13:14:12.271024"
+}

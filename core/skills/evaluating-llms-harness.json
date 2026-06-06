@@ -1,0 +1,23 @@
+{
+  "name": "evaluating-llms-harness",
+  "display_name": "evaluating-llms-harness",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.).",
+  "trigger": "",
+  "tags": [
+    "Evaluation",
+    "LM Evaluation Harness",
+    "Benchmarking",
+    "MMLU",
+    "HumanEval",
+    "GSM8K",
+    "EleutherAI",
+    "Model Quality",
+    "Academic Benchmarks",
+    "Industry Standard"
+  ],
+  "author": "Orchestra Research",
+  "source_path": "skill-test/skills/mlops/evaluation/lm-evaluation-harness",
+  "synced_at": "2026-06-06T13:14:12.256631"
+}

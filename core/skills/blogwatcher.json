@@ -1,0 +1,17 @@
+{
+  "name": "blogwatcher",
+  "display_name": "blogwatcher",
+  "version": "2.0.0",
+  "category": "uncategorized",
+  "description": "Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool.",
+  "trigger": "",
+  "tags": [
+    "RSS",
+    "Blogs",
+    "Feed-Reader",
+    "Monitoring"
+  ],
+  "author": "JulienTant (fork of Hyaxia/blogwatcher)",
+  "source_path": "skill-test/skills/research/blogwatcher",
+  "synced_at": "2026-06-06T13:14:12.225965"
+}

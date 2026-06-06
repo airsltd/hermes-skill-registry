@@ -1,0 +1,17 @@
+{
+  "name": "apple-notes",
+  "display_name": "apple-notes",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Manage Apple Notes via memo CLI: create, search, edit.",
+  "trigger": "",
+  "tags": [
+    "Notes",
+    "Apple",
+    "macOS",
+    "note-taking"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/apple/apple-notes",
+  "synced_at": "2026-06-06T13:14:12.248812"
+}

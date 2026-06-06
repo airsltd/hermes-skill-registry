@@ -1,0 +1,23 @@
+{
+  "name": "touchdesigner-mcp",
+  "display_name": "touchdesigner-mcp",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Control a running TouchDesigner instance via twozero MCP — create operators, set parameters, wire connections, execute Python, build real-time visuals. 36 native tools.",
+  "trigger": "",
+  "tags": [
+    "TouchDesigner",
+    "MCP",
+    "twozero",
+    "creative-coding",
+    "real-time-visuals",
+    "generative-art",
+    "audio-reactive",
+    "VJ",
+    "installation",
+    "GLSL"
+  ],
+  "author": "kshitijk4poor",
+  "source_path": "skill-test/skills/creative/touchdesigner-mcp",
+  "synced_at": "2026-06-06T13:14:12.321106"
+}

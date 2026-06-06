@@ -1,0 +1,19 @@
+{
+  "name": "pokemon-player",
+  "display_name": "pokemon-player",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Play Pokemon via headless emulator + RAM reads.",
+  "trigger": "",
+  "tags": [
+    "gaming",
+    "pokemon",
+    "emulator",
+    "pyboy",
+    "gameplay",
+    "gameboy"
+  ],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/gaming/pokemon-player",
+  "synced_at": "2026-06-06T13:14:12.306849"
+}

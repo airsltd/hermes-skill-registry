@@ -1,0 +1,17 @@
+{
+  "name": "airtable",
+  "display_name": "airtable",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Airtable REST API via curl. Records CRUD, filters, upserts.",
+  "trigger": "",
+  "tags": [
+    "Airtable",
+    "Productivity",
+    "Database",
+    "API"
+  ],
+  "author": "community",
+  "source_path": "skill-test/skills/productivity/airtable",
+  "synced_at": "2026-06-06T13:14:12.280284"
+}

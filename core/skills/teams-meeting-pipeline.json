@@ -1,0 +1,18 @@
+{
+  "name": "teams-meeting-pipeline",
+  "display_name": "teams-meeting-pipeline",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Operate the Teams meeting summary pipeline via Hermes CLI — summarize meetings, inspect pipeline status, replay jobs, manage Microsoft Graph subscriptions.",
+  "trigger": "",
+  "tags": [
+    "Teams",
+    "Microsoft Graph",
+    "Meetings",
+    "Productivity",
+    "Operations"
+  ],
+  "author": "Hermes Agent + Teknium",
+  "source_path": "skill-test/skills/productivity/teams-meeting-pipeline",
+  "synced_at": "2026-06-06T13:14:12.284603"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "github-code-review",
+  "display_name": "github-code-review",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Review PRs: diffs, inline comments via gh or REST.",
+  "trigger": "",
+  "tags": [
+    "GitHub",
+    "Code-Review",
+    "Pull-Requests",
+    "Git",
+    "Quality"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/github/github-code-review",
+  "synced_at": "2026-06-06T13:14:12.246244"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "webhook-subscriptions",
+  "display_name": "webhook-subscriptions",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Webhook subscriptions: event-driven agent runs.",
+  "trigger": "",
+  "tags": [
+    "webhook",
+    "events",
+    "automation",
+    "integrations",
+    "notifications",
+    "push"
+  ],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/devops/webhook-subscriptions",
+  "synced_at": "2026-06-06T13:14:12.286017"
+}

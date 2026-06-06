@@ -1,0 +1,17 @@
+{
+  "name": "baoyu-comic",
+  "display_name": "baoyu-comic",
+  "version": "1.56.1",
+  "category": "uncategorized",
+  "description": "Knowledge comics (知识漫画): educational, biography, tutorial.",
+  "trigger": "",
+  "tags": [
+    "comic",
+    "knowledge-comic",
+    "creative",
+    "image-generation"
+  ],
+  "author": "宝玉 (JimLiu)",
+  "source_path": "skill-test/skills/creative/baoyu-comic",
+  "synced_at": "2026-06-06T13:14:12.308077"
+}

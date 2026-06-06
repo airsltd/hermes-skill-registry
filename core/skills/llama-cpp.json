@@ -1,0 +1,24 @@
+{
+  "name": "llama-cpp",
+  "display_name": "llama-cpp",
+  "version": "2.1.2",
+  "category": "uncategorized",
+  "description": "llama.cpp local GGUF inference + HF Hub model discovery.",
+  "trigger": "",
+  "tags": [
+    "llama.cpp",
+    "GGUF",
+    "Quantization",
+    "Hugging Face Hub",
+    "CPU Inference",
+    "Apple Silicon",
+    "Edge Deployment",
+    "AMD GPUs",
+    "Intel GPUs",
+    "NVIDIA",
+    "URL-first"
+  ],
+  "author": "Orchestra Research",
+  "source_path": "skill-test/skills/mlops/inference/llama-cpp",
+  "synced_at": "2026-06-06T13:14:12.261559"
+}

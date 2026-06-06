@@ -1,0 +1,12 @@
+{
+  "name": "manim-video",
+  "display_name": "manim-video",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Manim CE animations: 3Blue1Brown math/algo videos.",
+  "trigger": "",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/creative/manim-video",
+  "synced_at": "2026-06-06T13:14:12.323430"
+}

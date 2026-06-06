@@ -1,0 +1,23 @@
+{
+  "name": "sketch",
+  "display_name": "sketch",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Throwaway HTML mockups: 2-3 design variants to compare.",
+  "trigger": "",
+  "tags": [
+    "sketch",
+    "mockup",
+    "design",
+    "ui",
+    "prototype",
+    "html",
+    "variants",
+    "exploration",
+    "wireframe",
+    "comparison"
+  ],
+  "author": "Hermes Agent (adapted from gsd-build/get-shit-done)",
+  "source_path": "skill-test/skills/creative/sketch",
+  "synced_at": "2026-06-06T13:14:12.341086"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "hermes-agent",
+  "display_name": "hermes-agent",
+  "version": "2.1.0",
+  "category": "uncategorized",
+  "description": "Configure, extend, or contribute to Hermes Agent.",
+  "trigger": "",
+  "tags": [
+    "hermes",
+    "setup",
+    "configuration",
+    "multi-agent",
+    "spawning",
+    "cli",
+    "gateway",
+    "development"
+  ],
+  "author": "Hermes Agent + Teknium",
+  "source_path": "skill-test/skills/autonomous-ai-agents/hermes-agent",
+  "synced_at": "2026-06-06T13:14:12.268997"
+}

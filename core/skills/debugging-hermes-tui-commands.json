@@ -1,0 +1,19 @@
+{
+  "name": "debugging-hermes-tui-commands",
+  "display_name": "debugging-hermes-tui-commands",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Debug Hermes TUI slash commands: Python, gateway, Ink UI.",
+  "trigger": "",
+  "tags": [
+    "debugging",
+    "hermes-agent",
+    "tui",
+    "slash-commands",
+    "typescript",
+    "python"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/software-development/debugging-hermes-tui-commands",
+  "synced_at": "2026-06-06T13:14:12.291282"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "powerpoint",
+  "display_name": "powerpoint",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Create, read, edit .pptx decks, slides, notes, templates.",
+  "trigger": "",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/productivity/powerpoint",
+  "synced_at": "2026-06-06T13:14:12.275921"
+}

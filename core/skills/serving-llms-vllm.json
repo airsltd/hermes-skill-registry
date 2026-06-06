@@ -1,0 +1,22 @@
+{
+  "name": "serving-llms-vllm",
+  "display_name": "serving-llms-vllm",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "vLLM: high-throughput LLM serving, OpenAI API, quantization.",
+  "trigger": "",
+  "tags": [
+    "vLLM",
+    "Inference Serving",
+    "PagedAttention",
+    "Continuous Batching",
+    "High Throughput",
+    "Production",
+    "OpenAI API",
+    "Quantization",
+    "Tensor Parallelism"
+  ],
+  "author": "Orchestra Research",
+  "source_path": "skill-test/skills/mlops/inference/vllm",
+  "synced_at": "2026-06-06T13:14:12.262719"
+}

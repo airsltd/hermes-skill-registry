@@ -1,0 +1,18 @@
+{
+  "name": "imessage",
+  "display_name": "imessage",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Send and receive iMessages/SMS via the imsg CLI on macOS.",
+  "trigger": "",
+  "tags": [
+    "iMessage",
+    "SMS",
+    "messaging",
+    "macOS",
+    "Apple"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/apple/imessage",
+  "synced_at": "2026-06-06T13:14:12.251504"
+}

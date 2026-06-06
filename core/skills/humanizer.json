@@ -1,0 +1,20 @@
+{
+  "name": "humanizer",
+  "display_name": "humanizer",
+  "version": "2.5.1",
+  "category": "creative",
+  "description": "Humanize text: strip AI-isms and add real voice.",
+  "trigger": "",
+  "tags": [
+    "writing",
+    "editing",
+    "humanize",
+    "anti-ai-slop",
+    "voice",
+    "prose",
+    "text"
+  ],
+  "author": "Siqi Chen (@blader, https://github.com/blader/humanizer), ported by Hermes Agent",
+  "source_path": "skill-test/skills/creative/humanizer",
+  "synced_at": "2026-06-06T13:14:12.331477"
+}

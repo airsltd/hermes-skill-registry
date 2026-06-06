@@ -1,0 +1,17 @@
+{
+  "name": "kanban-orchestrator",
+  "display_name": "kanban-orchestrator",
+  "version": "3.0.0",
+  "category": "uncategorized",
+  "description": "Decomposition playbook + anti-temptation rules for an orchestrator profile routing work through Kanban. The \"don't do the work yourself\" rule and the basic lifecycle are auto-injected into every kanban worker's system prompt; this skill is the deeper playbook when you're specifically playing the orchestrator role.",
+  "trigger": "",
+  "tags": [
+    "kanban",
+    "multi-agent",
+    "orchestration",
+    "routing"
+  ],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/devops/kanban-orchestrator",
+  "synced_at": "2026-06-06T13:14:12.289175"
+}

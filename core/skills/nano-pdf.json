@@ -1,0 +1,18 @@
+{
+  "name": "nano-pdf",
+  "display_name": "nano-pdf",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Edit PDF text/typos/titles via nano-pdf CLI (NL prompts).",
+  "trigger": "",
+  "tags": [
+    "PDF",
+    "Documents",
+    "Editing",
+    "NLP",
+    "Productivity"
+  ],
+  "author": "community",
+  "source_path": "skill-test/skills/productivity/nano-pdf",
+  "synced_at": "2026-06-06T13:14:12.283636"
+}

@@ -1,0 +1,31 @@
+{
+  "name": "Hermes Skill Dev Blog",
+  "description": "记录 Hermes 技能开发的经验、技巧和最佳实践",
+  "domain": "skills.airs.ltd/blog",
+  "author": {
+    "name": "skill-dev team",
+    "email": "dev@airs.ltd"
+  },
+  "categories": [
+    "skill-development",
+    "tutorials",
+    "case-studies",
+    "best-practices",
+    "release-notes",
+    "community-spotlight"
+  ],
+  "tags": [
+    "hermes",
+    "skills",
+    "automation",
+    "productivity",
+    "ai-agents",
+    "python"
+  ],
+  "build": {
+    "output_dir": "../web/blog",
+    "format": "markdown",
+    "generate_rss": true,
+    "generate_sitemap": true
+  }
+}

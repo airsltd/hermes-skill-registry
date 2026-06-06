@@ -1,0 +1,22 @@
+{
+  "name": "p5js",
+  "display_name": "p5js",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "p5.js sketches: gen art, shaders, interactive, 3D.",
+  "trigger": "",
+  "tags": [
+    "creative-coding",
+    "generative-art",
+    "p5js",
+    "canvas",
+    "interactive",
+    "visualization",
+    "webgl",
+    "shaders",
+    "animation"
+  ],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/creative/p5js",
+  "synced_at": "2026-06-06T13:14:12.318740"
+}

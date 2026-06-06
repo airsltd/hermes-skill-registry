@@ -1,0 +1,12 @@
+{
+  "name": "notebook-daily-processor",
+  "display_name": "notebook-daily-processor",
+  "version": "2.0",
+  "category": "productivity",
+  "description": "每日随手记智能处理 - 用语义理解分析、分类、总结用户的随手记",
+  "trigger": "定时任务调用，或用户请求分析随手记",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-dev/projects/notebook-system/notebook-daily-processor",
+  "synced_at": "2026-06-06T13:14:12.381162"
+}

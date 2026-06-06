@@ -1,0 +1,20 @@
+{
+  "name": "claude-code",
+  "display_name": "claude-code",
+  "version": "2.2.0",
+  "category": "uncategorized",
+  "description": "Delegate coding to Claude Code CLI (features, PRs).",
+  "trigger": "",
+  "tags": [
+    "Coding-Agent",
+    "Claude",
+    "Anthropic",
+    "Code-Review",
+    "Refactoring",
+    "PTY",
+    "Automation"
+  ],
+  "author": "Hermes Agent + Teknium",
+  "source_path": "skill-test/skills/autonomous-ai-agents/claude-code",
+  "synced_at": "2026-06-06T13:14:12.267752"
+}

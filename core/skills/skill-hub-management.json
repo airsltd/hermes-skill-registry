@@ -1,0 +1,12 @@
+{
+  "name": "skill-hub-management",
+  "display_name": "skill-hub-management",
+  "version": "1.0",
+  "category": "devops",
+  "description": "管理 Hermes Skill Hub - 技能索引站的创建、维护、数据同步和社区运营",
+  "trigger": "用户想要建立或维护 Skills 索引站、技能注册表、或技能分发平台",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/devops/skill-hub-management",
+  "synced_at": "2026-06-06T13:14:12.287932"
+}

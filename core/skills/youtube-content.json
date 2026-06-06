@@ -1,0 +1,12 @@
+{
+  "name": "youtube-content",
+  "display_name": "youtube-content",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "YouTube transcripts to summaries, threads, blogs.",
+  "trigger": "",
+  "tags": [],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/media/youtube-content",
+  "synced_at": "2026-06-06T13:14:12.237967"
+}

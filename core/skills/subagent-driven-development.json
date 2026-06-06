@@ -1,0 +1,18 @@
+{
+  "name": "subagent-driven-development",
+  "display_name": "subagent-driven-development",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Execute plans via delegate_task subagents (2-stage review).",
+  "trigger": "",
+  "tags": [
+    "delegation",
+    "subagent",
+    "implementation",
+    "workflow",
+    "parallel"
+  ],
+  "author": "Hermes Agent (adapted from obra/superpowers)",
+  "source_path": "skill-test/skills/software-development/subagent-driven-development",
+  "synced_at": "2026-06-06T13:14:12.296960"
+}

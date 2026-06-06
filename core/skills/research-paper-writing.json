@@ -1,0 +1,27 @@
+{
+  "name": "research-paper-writing",
+  "display_name": "research-paper-writing",
+  "version": "1.1.0",
+  "category": "research",
+  "description": "Write ML papers for NeurIPS/ICML/ICLR: design→submit.",
+  "trigger": "",
+  "tags": [
+    "Research",
+    "Paper Writing",
+    "Experiments",
+    "ML",
+    "AI",
+    "NeurIPS",
+    "ICML",
+    "ICLR",
+    "ACL",
+    "AAAI",
+    "COLM",
+    "LaTeX",
+    "Citations",
+    "Statistical Analysis"
+  ],
+  "author": "Orchestra Research",
+  "source_path": "skill-test/skills/research/research-paper-writing",
+  "synced_at": "2026-06-06T13:14:12.228511"
+}

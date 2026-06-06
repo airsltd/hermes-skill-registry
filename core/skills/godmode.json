@@ -1,0 +1,22 @@
+{
+  "name": "godmode",
+  "display_name": "godmode",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.",
+  "trigger": "",
+  "tags": [
+    "jailbreak",
+    "red-teaming",
+    "G0DM0D3",
+    "Parseltongue",
+    "GODMODE",
+    "uncensoring",
+    "safety-bypass",
+    "prompt-engineering",
+    "L1B3RT4S"
+  ],
+  "author": "Hermes Agent + Teknium",
+  "source_path": "skill-test/skills/red-teaming/godmode",
+  "synced_at": "2026-06-06T13:14:12.302442"
+}

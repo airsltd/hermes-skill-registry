@@ -1,0 +1,17 @@
+{
+  "name": "baoyu-infographic",
+  "display_name": "baoyu-infographic",
+  "version": "1.56.1",
+  "category": "uncategorized",
+  "description": "Infographics: 21 layouts x 21 styles (信息图, 可视化).",
+  "trigger": "",
+  "tags": [
+    "infographic",
+    "visual-summary",
+    "creative",
+    "image-generation"
+  ],
+  "author": "宝玉 (JimLiu)",
+  "source_path": "skill-test/skills/creative/baoyu-infographic",
+  "synced_at": "2026-06-06T13:14:12.337497"
+}

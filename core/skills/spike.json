@@ -1,0 +1,23 @@
+{
+  "name": "spike",
+  "display_name": "spike",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Throwaway experiments to validate an idea before build.",
+  "trigger": "",
+  "tags": [
+    "spike",
+    "prototype",
+    "experiment",
+    "feasibility",
+    "throwaway",
+    "exploration",
+    "research",
+    "planning",
+    "mvp",
+    "proof-of-concept"
+  ],
+  "author": "Hermes Agent (adapted from gsd-build/get-shit-done)",
+  "source_path": "skill-test/skills/software-development/spike",
+  "synced_at": "2026-06-06T13:14:12.296046"
+}

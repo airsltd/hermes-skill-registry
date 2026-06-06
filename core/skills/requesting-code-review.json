@@ -1,0 +1,19 @@
+{
+  "name": "requesting-code-review",
+  "display_name": "requesting-code-review",
+  "version": "2.0.0",
+  "category": "uncategorized",
+  "description": "Pre-commit review: security scan, quality gates, auto-fix.",
+  "trigger": "",
+  "tags": [
+    "code-review",
+    "security",
+    "verification",
+    "quality",
+    "pre-commit",
+    "auto-fix"
+  ],
+  "author": "Hermes Agent (adapted from obra/superpowers + MorAlekss)",
+  "source_path": "skill-test/skills/software-development/requesting-code-review",
+  "synced_at": "2026-06-06T13:14:12.298203"
+}

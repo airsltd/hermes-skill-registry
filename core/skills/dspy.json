@@ -1,0 +1,23 @@
+{
+  "name": "dspy",
+  "display_name": "dspy",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "DSPy: declarative LM programs, auto-optimize prompts, RAG.",
+  "trigger": "",
+  "tags": [
+    "Prompt Engineering",
+    "DSPy",
+    "Declarative Programming",
+    "RAG",
+    "Agents",
+    "Prompt Optimization",
+    "LM Programming",
+    "Stanford NLP",
+    "Automatic Optimization",
+    "Modular AI"
+  ],
+  "author": "Orchestra Research",
+  "source_path": "skill-test/skills/mlops/research/dspy",
+  "synced_at": "2026-06-06T13:14:12.253857"
+}

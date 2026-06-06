@@ -1,0 +1,16 @@
+{
+  "name": "baoyu-article-illustrator",
+  "display_name": "baoyu-article-illustrator",
+  "version": "1.57.0",
+  "category": "creative",
+  "description": "Article illustrations: type × style × palette consistency.",
+  "trigger": "",
+  "tags": [
+    "article-illustration",
+    "creative",
+    "image-generation"
+  ],
+  "author": "宝玉 (JimLiu)",
+  "source_path": "skill-test/skills/creative/baoyu-article-illustrator",
+  "synced_at": "2026-06-06T13:14:12.316654"
+}

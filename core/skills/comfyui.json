@@ -1,0 +1,16 @@
+{
+  "name": "comfyui",
+  "display_name": "comfyui",
+  "version": "5.1.0",
+  "category": "creative",
+  "description": "Generate images, video, and audio with ComfyUI — install, launch, manage nodes/models, run workflows with parameter injection. Uses the official comfy-cli for lifecycle and direct REST/WebSocket API for execution.",
+  "trigger": "",
+  "tags": "",
+  "author": [
+    "kshitijk4poor",
+    "alt-glitch",
+    "purzbeats"
+  ],
+  "source_path": "skill-test/skills/creative/comfyui",
+  "synced_at": "2026-06-06T13:14:12.332680"
+}

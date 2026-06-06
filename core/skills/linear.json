@@ -1,0 +1,19 @@
+{
+  "name": "linear",
+  "display_name": "linear",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Linear: manage issues, projects, teams via GraphQL + curl.",
+  "trigger": "",
+  "tags": [
+    "Linear",
+    "Project Management",
+    "Issues",
+    "GraphQL",
+    "API",
+    "Productivity"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/productivity/linear",
+  "synced_at": "2026-06-06T13:14:12.277463"
+}

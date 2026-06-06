@@ -1,0 +1,17 @@
+{
+  "name": "polymarket",
+  "display_name": "polymarket",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Query Polymarket: markets, prices, orderbooks, history.",
+  "trigger": "",
+  "tags": [
+    "polymarket",
+    "prediction-markets",
+    "market-data",
+    "trading"
+  ],
+  "author": "Hermes Agent + Teknium",
+  "source_path": "skill-test/skills/research/polymarket",
+  "synced_at": "2026-06-06T13:14:12.231810"
+}

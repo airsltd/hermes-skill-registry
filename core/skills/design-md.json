@@ -1,0 +1,22 @@
+{
+  "name": "design-md",
+  "display_name": "design-md",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Author/validate/export Google's DESIGN.md token spec files.",
+  "trigger": "",
+  "tags": [
+    "design",
+    "design-system",
+    "tokens",
+    "ui",
+    "accessibility",
+    "wcag",
+    "tailwind",
+    "dtcg",
+    "google"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/creative/design-md",
+  "synced_at": "2026-06-06T13:14:12.311751"
+}

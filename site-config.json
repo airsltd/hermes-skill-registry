@@ -1,0 +1,24 @@
+{
+  "name": "Hermes Skill Registry",
+  "description": "发现和安装优质的 Hermes Agent 技能",
+  "domain": "skills.airs.ltd",
+  "blog_subdomain": "skills.airs.ltd/blog",
+  "source_skills": [
+    {
+      "type": "local",
+      "path": "/userdata/hermes/profiles/skill-test/skills"
+    },
+    {
+      "type": "local", 
+      "path": "/userdata/hermes/profiles/skill-dev/projects/notebook-system"
+    }
+  ],
+  "output": {
+    "web_dir": "./web",
+    "core_dir": "./core"
+  },
+  "auto_sync": {
+    "enabled": true,
+    "interval_hours": 6
+  }
+}

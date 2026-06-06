@@ -1,0 +1,19 @@
+{
+  "name": "excalidraw",
+  "display_name": "excalidraw",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Hand-drawn Excalidraw JSON diagrams (arch, flow, seq).",
+  "trigger": "",
+  "tags": [
+    "Excalidraw",
+    "Diagrams",
+    "Flowcharts",
+    "Architecture",
+    "Visualization",
+    "JSON"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/creative/excalidraw",
+  "synced_at": "2026-06-06T13:14:12.326693"
+}

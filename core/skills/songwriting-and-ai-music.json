@@ -1,0 +1,19 @@
+{
+  "name": "songwriting-and-ai-music",
+  "display_name": "songwriting-and-ai-music",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Songwriting craft and Suno AI music prompts.",
+  "trigger": "",
+  "tags": [
+    "songwriting",
+    "music",
+    "suno",
+    "parody",
+    "lyrics",
+    "creative"
+  ],
+  "author": "Unknown",
+  "source_path": "skill-test/skills/creative/songwriting-and-ai-music",
+  "synced_at": "2026-06-06T13:14:12.341974"
+}

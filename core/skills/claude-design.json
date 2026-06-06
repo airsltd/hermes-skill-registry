@@ -1,0 +1,23 @@
+{
+  "name": "claude-design",
+  "display_name": "claude-design",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Design one-off HTML artifacts (landing, deck, prototype).",
+  "trigger": "",
+  "tags": [
+    "design",
+    "html",
+    "prototype",
+    "ux",
+    "ui",
+    "creative",
+    "artifact",
+    "deck",
+    "motion",
+    "design-system"
+  ],
+  "author": "BadTechBandit",
+  "source_path": "skill-test/skills/creative/claude-design",
+  "synced_at": "2026-06-06T13:14:12.339223"
+}

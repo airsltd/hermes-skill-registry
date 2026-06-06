@@ -1,0 +1,19 @@
+{
+  "name": "codebase-inspection",
+  "display_name": "codebase-inspection",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Inspect codebases w/ pygount: LOC, languages, ratios.",
+  "trigger": "",
+  "tags": [
+    "LOC",
+    "Code Analysis",
+    "pygount",
+    "Codebase",
+    "Metrics",
+    "Repository"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/github/codebase-inspection",
+  "synced_at": "2026-06-06T13:14:12.241441"
+}

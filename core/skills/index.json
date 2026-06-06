@@ -1,0 +1,1820 @@
+{
+  "generated_at": "2026-06-06T13:14:12.382769",
+  "total_skills": 91,
+  "categories": {
+    "uncategorized": [
+      "arxiv",
+      "blogwatcher",
+      "polymarket",
+      "xurl",
+      "gif-search",
+      "spotify",
+      "youtube-content",
+      "heartmula",
+      "songsee",
+      "codebase-inspection",
+      "github-auth",
+      "github-pr-workflow",
+      "github-issues",
+      "github-code-review",
+      "github-repo-management",
+      "apple-notes",
+      "findmy",
+      "apple-reminders",
+      "imessage",
+      "dspy",
+      "weights-and-biases",
+      "evaluating-llms-harness",
+      "huggingface-hub",
+      "audiocraft-audio-generation",
+      "segment-anything-model",
+      "llama-cpp",
+      "serving-llms-vllm",
+      "obliteratus",
+      "opencode",
+      "kanban-codex-lane",
+      "claude-code",
+      "hermes-agent",
+      "codex",
+      "obsidian",
+      "openhue",
+      "native-mcp",
+      "ocr-and-documents",
+      "powerpoint",
+      "linear",
+      "google-workspace",
+      "airtable",
+      "notion",
+      "nano-pdf",
+      "teams-meeting-pipeline",
+      "webhook-subscriptions",
+      "kanban-worker",
+      "kanban-orchestrator",
+      "test-driven-development",
+      "debugging-hermes-tui-commands",
+      "writing-plans",
+      "hermes-s6-container-supervision",
+      "python-debugpy",
+      "systematic-debugging",
+      "spike",
+      "subagent-driven-development",
+      "requesting-code-review",
+      "hermes-agent-skill-authoring",
+      "plan",
+      "node-inspect-debugger",
+      "godmode",
+      "himalaya",
+      "minecraft-modpack-server",
+      "pokemon-player",
+      "baoyu-comic",
+      "pretext",
+      "design-md",
+      "popular-web-designs",
+      "p5js",
+      "touchdesigner-mcp",
+      "manim-video",
+      "excalidraw",
+      "architecture-diagram",
+      "ascii-video",
+      "baoyu-infographic",
+      "claude-design",
+      "ascii-art",
+      "sketch",
+      "songwriting-and-ai-music"
+    ],
+    "research": [
+      "llm-wiki",
+      "research-paper-writing"
+    ],
+    "data-science": [
+      "jupyter-live-kernel"
+    ],
+    "desktop": [
+      "macos-computer-use"
+    ],
+    "productivity": [
+      "maps",
+      "notebook-smart-processing",
+      "notebook-daily-processor"
+    ],
+    "devops": [
+      "skill-hub-management"
+    ],
+    "creative": [
+      "baoyu-article-illustrator",
+      "ideation",
+      "pixel-art",
+      "humanizer",
+      "comfyui"
+    ]
+  },
+  "skills": {
+    "arxiv": {
+      "name": "arxiv",
+      "display_name": "arxiv",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Search arXiv papers by keyword, author, category, or ID.",
+      "trigger": "",
+      "tags": [
+        "Research",
+        "Arxiv",
+        "Papers",
+        "Academic",
+        "Science",
+        "API"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/research/arxiv",
+      "synced_at": "2026-06-06T13:14:12.223314"
+    },
+    "llm-wiki": {
+      "name": "llm-wiki",
+      "display_name": "llm-wiki",
+      "version": "2.1.0",
+      "category": "research",
+      "description": "Karpathy's LLM Wiki: build/query interlinked markdown KB.",
+      "trigger": "",
+      "tags": [
+        "wiki",
+        "knowledge-base",
+        "research",
+        "notes",
+        "markdown",
+        "rag-alternative"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/research/llm-wiki",
+      "synced_at": "2026-06-06T13:14:12.224966"
+    },
+    "blogwatcher": {
+      "name": "blogwatcher",
+      "display_name": "blogwatcher",
+      "version": "2.0.0",
+      "category": "uncategorized",
+      "description": "Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool.",
+      "trigger": "",
+      "tags": [
+        "RSS",
+        "Blogs",
+        "Feed-Reader",
+        "Monitoring"
+      ],
+      "author": "JulienTant (fork of Hyaxia/blogwatcher)",
+      "source_path": "skill-test/skills/research/blogwatcher",
+      "synced_at": "2026-06-06T13:14:12.225965"
+    },
+    "research-paper-writing": {
+      "name": "research-paper-writing",
+      "display_name": "research-paper-writing",
+      "version": "1.1.0",
+      "category": "research",
+      "description": "Write ML papers for NeurIPS/ICML/ICLR: design→submit.",
+      "trigger": "",
+      "tags": [
+        "Research",
+        "Paper Writing",
+        "Experiments",
+        "ML",
+        "AI",
+        "NeurIPS",
+        "ICML",
+        "ICLR",
+        "ACL",
+        "AAAI",
+        "COLM",
+        "LaTeX",
+        "Citations",
+        "Statistical Analysis"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/research/research-paper-writing",
+      "synced_at": "2026-06-06T13:14:12.228511"
+    },
+    "polymarket": {
+      "name": "polymarket",
+      "display_name": "polymarket",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Query Polymarket: markets, prices, orderbooks, history.",
+      "trigger": "",
+      "tags": [
+        "polymarket",
+        "prediction-markets",
+        "market-data",
+        "trading"
+      ],
+      "author": "Hermes Agent + Teknium",
+      "source_path": "skill-test/skills/research/polymarket",
+      "synced_at": "2026-06-06T13:14:12.231810"
+    },
+    "xurl": {
+      "name": "xurl",
+      "display_name": "xurl",
+      "version": "1.1.1",
+      "category": "uncategorized",
+      "description": "X/Twitter via xurl CLI: post, search, DM, media, v2 API.",
+      "trigger": "",
+      "tags": [
+        "twitter",
+        "x",
+        "social-media",
+        "xurl",
+        "official-api"
+      ],
+      "author": "xdevplatform + openclaw + Hermes Agent",
+      "source_path": "skill-test/skills/social-media/xurl",
+      "synced_at": "2026-06-06T13:14:12.233524"
+    },
+    "jupyter-live-kernel": {
+      "name": "jupyter-live-kernel",
+      "display_name": "jupyter-live-kernel",
+      "version": "1.0.0",
+      "category": "data-science",
+      "description": "Iterative Python via live Jupyter kernel (hamelnb).",
+      "trigger": "",
+      "tags": [
+        "jupyter",
+        "notebook",
+        "repl",
+        "data-science",
+        "exploration",
+        "iterative"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/data-science/jupyter-live-kernel",
+      "synced_at": "2026-06-06T13:14:12.234937"
+    },
+    "gif-search": {
+      "name": "gif-search",
+      "display_name": "gif-search",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Search/download GIFs from Tenor via curl + jq.",
+      "trigger": "",
+      "tags": [
+        "GIF",
+        "Media",
+        "Search",
+        "Tenor",
+        "API"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/media/gif-search",
+      "synced_at": "2026-06-06T13:14:12.236125"
+    },
+    "spotify": {
+      "name": "spotify",
+      "display_name": "spotify",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Spotify: play, search, queue, manage playlists and devices.",
+      "trigger": "",
+      "tags": [
+        "spotify",
+        "music",
+        "playback",
+        "playlists",
+        "media"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/media/spotify",
+      "synced_at": "2026-06-06T13:14:12.237132"
+    },
+    "youtube-content": {
+      "name": "youtube-content",
+      "display_name": "youtube-content",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "YouTube transcripts to summaries, threads, blogs.",
+      "trigger": "",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/media/youtube-content",
+      "synced_at": "2026-06-06T13:14:12.237967"
+    },
+    "heartmula": {
+      "name": "heartmula",
+      "display_name": "heartmula",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "HeartMuLa: Suno-like song generation from lyrics + tags.",
+      "trigger": "",
+      "tags": [
+        "music",
+        "audio",
+        "generation",
+        "ai",
+        "heartmula",
+        "heartcodec",
+        "lyrics",
+        "songs"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/media/heartmula",
+      "synced_at": "2026-06-06T13:14:12.239408"
+    },
+    "songsee": {
+      "name": "songsee",
+      "display_name": "songsee",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Audio spectrograms/features (mel, chroma, MFCC) via CLI.",
+      "trigger": "",
+      "tags": [
+        "Audio",
+        "Visualization",
+        "Spectrogram",
+        "Music",
+        "Analysis"
+      ],
+      "author": "community",
+      "source_path": "skill-test/skills/media/songsee",
+      "synced_at": "2026-06-06T13:14:12.240290"
+    },
+    "codebase-inspection": {
+      "name": "codebase-inspection",
+      "display_name": "codebase-inspection",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Inspect codebases w/ pygount: LOC, languages, ratios.",
+      "trigger": "",
+      "tags": [
+        "LOC",
+        "Code Analysis",
+        "pygount",
+        "Codebase",
+        "Metrics",
+        "Repository"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/github/codebase-inspection",
+      "synced_at": "2026-06-06T13:14:12.241441"
+    },
+    "github-auth": {
+      "name": "github-auth",
+      "display_name": "github-auth",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login.",
+      "trigger": "",
+      "tags": [
+        "GitHub",
+        "Authentication",
+        "Git",
+        "gh-cli",
+        "SSH",
+        "Setup"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/github/github-auth",
+      "synced_at": "2026-06-06T13:14:12.242335"
+    },
+    "github-pr-workflow": {
+      "name": "github-pr-workflow",
+      "display_name": "github-pr-workflow",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "GitHub PR lifecycle: branch, commit, open, CI, merge.",
+      "trigger": "",
+      "tags": [
+        "GitHub",
+        "Pull-Requests",
+        "CI/CD",
+        "Git",
+        "Automation",
+        "Merge"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/github/github-pr-workflow",
+      "synced_at": "2026-06-06T13:14:12.243516"
+    },
+    "github-issues": {
+      "name": "github-issues",
+      "display_name": "github-issues",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Create, triage, label, assign GitHub issues via gh or REST.",
+      "trigger": "",
+      "tags": [
+        "GitHub",
+        "Issues",
+        "Project-Management",
+        "Bug-Tracking",
+        "Triage"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/github/github-issues",
+      "synced_at": "2026-06-06T13:14:12.244991"
+    },
+    "github-code-review": {
+      "name": "github-code-review",
+      "display_name": "github-code-review",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Review PRs: diffs, inline comments via gh or REST.",
+      "trigger": "",
+      "tags": [
+        "GitHub",
+        "Code-Review",
+        "Pull-Requests",
+        "Git",
+        "Quality"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/github/github-code-review",
+      "synced_at": "2026-06-06T13:14:12.246244"
+    },
+    "github-repo-management": {
+      "name": "github-repo-management",
+      "display_name": "github-repo-management",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Clone/create/fork repos; manage remotes, releases.",
+      "trigger": "",
+      "tags": [
+        "GitHub",
+        "Repositories",
+        "Git",
+        "Releases",
+        "Secrets",
+        "Configuration"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/github/github-repo-management",
+      "synced_at": "2026-06-06T13:14:12.247484"
+    },
+    "apple-notes": {
+      "name": "apple-notes",
+      "display_name": "apple-notes",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Manage Apple Notes via memo CLI: create, search, edit.",
+      "trigger": "",
+      "tags": [
+        "Notes",
+        "Apple",
+        "macOS",
+        "note-taking"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/apple/apple-notes",
+      "synced_at": "2026-06-06T13:14:12.248812"
+    },
+    "findmy": {
+      "name": "findmy",
+      "display_name": "findmy",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Track Apple devices/AirTags via FindMy.app on macOS.",
+      "trigger": "",
+      "tags": [
+        "FindMy",
+        "AirTag",
+        "location",
+        "tracking",
+        "macOS",
+        "Apple"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/apple/findmy",
+      "synced_at": "2026-06-06T13:14:12.249705"
+    },
+    "apple-reminders": {
+      "name": "apple-reminders",
+      "display_name": "apple-reminders",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Apple Reminders via remindctl: add, list, complete.",
+      "trigger": "",
+      "tags": [
+        "Reminders",
+        "tasks",
+        "todo",
+        "macOS",
+        "Apple"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/apple/apple-reminders",
+      "synced_at": "2026-06-06T13:14:12.250603"
+    },
+    "imessage": {
+      "name": "imessage",
+      "display_name": "imessage",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Send and receive iMessages/SMS via the imsg CLI on macOS.",
+      "trigger": "",
+      "tags": [
+        "iMessage",
+        "SMS",
+        "messaging",
+        "macOS",
+        "Apple"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/apple/imessage",
+      "synced_at": "2026-06-06T13:14:12.251504"
+    },
+    "macos-computer-use": {
+      "name": "macos-computer-use",
+      "display_name": "macos-computer-use",
+      "version": "1.0.0",
+      "category": "desktop",
+      "description": "|",
+      "trigger": "",
+      "tags": [
+        "computer-use",
+        "macos",
+        "desktop",
+        "automation",
+        "gui"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/apple/macos-computer-use",
+      "synced_at": "2026-06-06T13:14:12.252419"
+    },
+    "dspy": {
+      "name": "dspy",
+      "display_name": "dspy",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "DSPy: declarative LM programs, auto-optimize prompts, RAG.",
+      "trigger": "",
+      "tags": [
+        "Prompt Engineering",
+        "DSPy",
+        "Declarative Programming",
+        "RAG",
+        "Agents",
+        "Prompt Optimization",
+        "LM Programming",
+        "Stanford NLP",
+        "Automatic Optimization",
+        "Modular AI"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/mlops/research/dspy",
+      "synced_at": "2026-06-06T13:14:12.253857"
+    },
+    "weights-and-biases": {
+      "name": "weights-and-biases",
+      "display_name": "weights-and-biases",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "W&B: log ML experiments, sweeps, model registry, dashboards.",
+      "trigger": "",
+      "tags": [
+        "MLOps",
+        "Weights And Biases",
+        "WandB",
+        "Experiment Tracking",
+        "Hyperparameter Tuning",
+        "Model Registry",
+        "Collaboration",
+        "Real-Time Visualization",
+        "PyTorch",
+        "TensorFlow",
+        "HuggingFace"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/mlops/evaluation/weights-and-biases",
+      "synced_at": "2026-06-06T13:14:12.255489"
+    },
+    "evaluating-llms-harness": {
+      "name": "evaluating-llms-harness",
+      "display_name": "evaluating-llms-harness",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.).",
+      "trigger": "",
+      "tags": [
+        "Evaluation",
+        "LM Evaluation Harness",
+        "Benchmarking",
+        "MMLU",
+        "HumanEval",
+        "GSM8K",
+        "EleutherAI",
+        "Model Quality",
+        "Academic Benchmarks",
+        "Industry Standard"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/mlops/evaluation/lm-evaluation-harness",
+      "synced_at": "2026-06-06T13:14:12.256631"
+    },
+    "huggingface-hub": {
+      "name": "huggingface-hub",
+      "display_name": "huggingface-hub",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "HuggingFace hf CLI: search/download/upload models, datasets.",
+      "trigger": "",
+      "tags": [
+        "huggingface",
+        "hf",
+        "models",
+        "datasets",
+        "hub",
+        "mlops"
+      ],
+      "author": "Hugging Face",
+      "source_path": "skill-test/skills/mlops/huggingface-hub",
+      "synced_at": "2026-06-06T13:14:12.257636"
+    },
+    "audiocraft-audio-generation": {
+      "name": "audiocraft-audio-generation",
+      "display_name": "audiocraft-audio-generation",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "AudioCraft: MusicGen text-to-music, AudioGen text-to-sound.",
+      "trigger": "",
+      "tags": [
+        "Multimodal",
+        "Audio Generation",
+        "Text-to-Music",
+        "Text-to-Audio",
+        "MusicGen"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/mlops/models/audiocraft",
+      "synced_at": "2026-06-06T13:14:12.259108"
+    },
+    "segment-anything-model": {
+      "name": "segment-anything-model",
+      "display_name": "segment-anything-model",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "SAM: zero-shot image segmentation via points, boxes, masks.",
+      "trigger": "",
+      "tags": [
+        "Multimodal",
+        "Image Segmentation",
+        "Computer Vision",
+        "SAM",
+        "Zero-Shot"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/mlops/models/segment-anything",
+      "synced_at": "2026-06-06T13:14:12.260264"
+    },
+    "llama-cpp": {
+      "name": "llama-cpp",
+      "display_name": "llama-cpp",
+      "version": "2.1.2",
+      "category": "uncategorized",
+      "description": "llama.cpp local GGUF inference + HF Hub model discovery.",
+      "trigger": "",
+      "tags": [
+        "llama.cpp",
+        "GGUF",
+        "Quantization",
+        "Hugging Face Hub",
+        "CPU Inference",
+        "Apple Silicon",
+        "Edge Deployment",
+        "AMD GPUs",
+        "Intel GPUs",
+        "NVIDIA",
+        "URL-first"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/mlops/inference/llama-cpp",
+      "synced_at": "2026-06-06T13:14:12.261559"
+    },
+    "serving-llms-vllm": {
+      "name": "serving-llms-vllm",
+      "display_name": "serving-llms-vllm",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "vLLM: high-throughput LLM serving, OpenAI API, quantization.",
+      "trigger": "",
+      "tags": [
+        "vLLM",
+        "Inference Serving",
+        "PagedAttention",
+        "Continuous Batching",
+        "High Throughput",
+        "Production",
+        "OpenAI API",
+        "Quantization",
+        "Tensor Parallelism"
+      ],
+      "author": "Orchestra Research",
+      "source_path": "skill-test/skills/mlops/inference/vllm",
+      "synced_at": "2026-06-06T13:14:12.262719"
+    },
+    "obliteratus": {
+      "name": "obliteratus",
+      "display_name": "obliteratus",
+      "version": "2.0.0",
+      "category": "uncategorized",
+      "description": "OBLITERATUS: abliterate LLM refusals (diff-in-means).",
+      "trigger": "",
+      "tags": [
+        "Abliteration",
+        "Uncensoring",
+        "Refusal-Removal",
+        "LLM",
+        "Weight-Projection",
+        "SVD",
+        "Mechanistic-Interpretability",
+        "HuggingFace",
+        "Model-Surgery"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/mlops/inference/obliteratus",
+      "synced_at": "2026-06-06T13:14:12.263881"
+    },
+    "opencode": {
+      "name": "opencode",
+      "display_name": "opencode",
+      "version": "1.2.0",
+      "category": "uncategorized",
+      "description": "Delegate coding to OpenCode CLI (features, PR review).",
+      "trigger": "",
+      "tags": [
+        "Coding-Agent",
+        "OpenCode",
+        "Autonomous",
+        "Refactoring",
+        "Code-Review"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/autonomous-ai-agents/opencode",
+      "synced_at": "2026-06-06T13:14:12.265371"
+    },
+    "kanban-codex-lane": {
+      "name": "kanban-codex-lane",
+      "display_name": "kanban-codex-lane",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Use when a Hermes Kanban worker wants to run Codex CLI as an isolated implementation lane while Hermes keeps ownership of task lifecycle, reconciliation, testing, and handoff.",
+      "trigger": "",
+      "tags": [
+        "kanban",
+        "codex",
+        "worktrees",
+        "autonomous-agents",
+        "prediction-market-bot"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/autonomous-ai-agents/kanban-codex-lane",
+      "synced_at": "2026-06-06T13:14:12.266256"
+    },
+    "claude-code": {
+      "name": "claude-code",
+      "display_name": "claude-code",
+      "version": "2.2.0",
+      "category": "uncategorized",
+      "description": "Delegate coding to Claude Code CLI (features, PRs).",
+      "trigger": "",
+      "tags": [
+        "Coding-Agent",
+        "Claude",
+        "Anthropic",
+        "Code-Review",
+        "Refactoring",
+        "PTY",
+        "Automation"
+      ],
+      "author": "Hermes Agent + Teknium",
+      "source_path": "skill-test/skills/autonomous-ai-agents/claude-code",
+      "synced_at": "2026-06-06T13:14:12.267752"
+    },
+    "hermes-agent": {
+      "name": "hermes-agent",
+      "display_name": "hermes-agent",
+      "version": "2.1.0",
+      "category": "uncategorized",
+      "description": "Configure, extend, or contribute to Hermes Agent.",
+      "trigger": "",
+      "tags": [
+        "hermes",
+        "setup",
+        "configuration",
+        "multi-agent",
+        "spawning",
+        "cli",
+        "gateway",
+        "development"
+      ],
+      "author": "Hermes Agent + Teknium",
+      "source_path": "skill-test/skills/autonomous-ai-agents/hermes-agent",
+      "synced_at": "2026-06-06T13:14:12.268997"
+    },
+    "codex": {
+      "name": "codex",
+      "display_name": "codex",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Delegate coding to OpenAI Codex CLI (features, PRs).",
+      "trigger": "",
+      "tags": [
+        "Coding-Agent",
+        "Codex",
+        "OpenAI",
+        "Code-Review",
+        "Refactoring"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/autonomous-ai-agents/codex",
+      "synced_at": "2026-06-06T13:14:12.269892"
+    },
+    "obsidian": {
+      "name": "obsidian",
+      "display_name": "obsidian",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Read, search, create, and edit notes in the Obsidian vault.",
+      "trigger": "",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/note-taking/obsidian",
+      "synced_at": "2026-06-06T13:14:12.271024"
+    },
+    "openhue": {
+      "name": "openhue",
+      "display_name": "openhue",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Control Philips Hue lights, scenes, rooms via OpenHue CLI.",
+      "trigger": "",
+      "tags": [
+        "Smart-Home",
+        "Hue",
+        "Lights",
+        "IoT",
+        "Automation"
+      ],
+      "author": "community",
+      "source_path": "skill-test/skills/smart-home/openhue",
+      "synced_at": "2026-06-06T13:14:12.272150"
+    },
+    "native-mcp": {
+      "name": "native-mcp",
+      "display_name": "native-mcp",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "MCP client: connect servers, register tools (stdio/HTTP).",
+      "trigger": "",
+      "tags": [
+        "MCP",
+        "Tools",
+        "Integrations"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/mcp/native-mcp",
+      "synced_at": "2026-06-06T13:14:12.273286"
+    },
+    "ocr-and-documents": {
+      "name": "ocr-and-documents",
+      "display_name": "ocr-and-documents",
+      "version": "2.3.0",
+      "category": "uncategorized",
+      "description": "Extract text from PDFs/scans (pymupdf, marker-pdf).",
+      "trigger": "",
+      "tags": [
+        "PDF",
+        "Documents",
+        "Research",
+        "Arxiv",
+        "Text-Extraction",
+        "OCR"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/productivity/ocr-and-documents",
+      "synced_at": "2026-06-06T13:14:12.274699"
+    },
+    "powerpoint": {
+      "name": "powerpoint",
+      "display_name": "powerpoint",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Create, read, edit .pptx decks, slides, notes, templates.",
+      "trigger": "",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/productivity/powerpoint",
+      "synced_at": "2026-06-06T13:14:12.275921"
+    },
+    "linear": {
+      "name": "linear",
+      "display_name": "linear",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Linear: manage issues, projects, teams via GraphQL + curl.",
+      "trigger": "",
+      "tags": [
+        "Linear",
+        "Project Management",
+        "Issues",
+        "GraphQL",
+        "API",
+        "Productivity"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/productivity/linear",
+      "synced_at": "2026-06-06T13:14:12.277463"
+    },
+    "google-workspace": {
+      "name": "google-workspace",
+      "display_name": "google-workspace",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Google OAuth2 client credentials (downloaded from Google Cloud Console)",
+      "trigger": "",
+      "tags": [
+        "Google",
+        "Gmail",
+        "Calendar",
+        "Drive",
+        "Sheets",
+        "Docs",
+        "Contacts",
+        "Email",
+        "OAuth"
+      ],
+      "author": "Nous Research",
+      "source_path": "skill-test/skills/productivity/google-workspace",
+      "synced_at": "2026-06-06T13:14:12.278708"
+    },
+    "airtable": {
+      "name": "airtable",
+      "display_name": "airtable",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Airtable REST API via curl. Records CRUD, filters, upserts.",
+      "trigger": "",
+      "tags": [
+        "Airtable",
+        "Productivity",
+        "Database",
+        "API"
+      ],
+      "author": "community",
+      "source_path": "skill-test/skills/productivity/airtable",
+      "synced_at": "2026-06-06T13:14:12.280284"
+    },
+    "notion": {
+      "name": "notion",
+      "display_name": "notion",
+      "version": "2.0.0",
+      "category": "uncategorized",
+      "description": "Notion API + ntn CLI: pages, databases, markdown, Workers.",
+      "trigger": "",
+      "tags": [
+        "Notion",
+        "Productivity",
+        "Notes",
+        "Database",
+        "API",
+        "CLI",
+        "Workers"
+      ],
+      "author": "community",
+      "source_path": "skill-test/skills/productivity/notion",
+      "synced_at": "2026-06-06T13:14:12.281295"
+    },
+    "maps": {
+      "name": "maps",
+      "display_name": "maps",
+      "version": "1.2.0",
+      "category": "productivity",
+      "description": "Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.",
+      "trigger": "",
+      "tags": [
+        "maps",
+        "geocoding",
+        "places",
+        "routing",
+        "distance",
+        "directions",
+        "nearby",
+        "location",
+        "openstreetmap",
+        "nominatim",
+        "overpass",
+        "osrm"
+      ],
+      "author": "Mibayy",
+      "source_path": "skill-test/skills/productivity/maps",
+      "synced_at": "2026-06-06T13:14:12.282521"
+    },
+    "nano-pdf": {
+      "name": "nano-pdf",
+      "display_name": "nano-pdf",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Edit PDF text/typos/titles via nano-pdf CLI (NL prompts).",
+      "trigger": "",
+      "tags": [
+        "PDF",
+        "Documents",
+        "Editing",
+        "NLP",
+        "Productivity"
+      ],
+      "author": "community",
+      "source_path": "skill-test/skills/productivity/nano-pdf",
+      "synced_at": "2026-06-06T13:14:12.283636"
+    },
+    "teams-meeting-pipeline": {
+      "name": "teams-meeting-pipeline",
+      "display_name": "teams-meeting-pipeline",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Operate the Teams meeting summary pipeline via Hermes CLI — summarize meetings, inspect pipeline status, replay jobs, manage Microsoft Graph subscriptions.",
+      "trigger": "",
+      "tags": [
+        "Teams",
+        "Microsoft Graph",
+        "Meetings",
+        "Productivity",
+        "Operations"
+      ],
+      "author": "Hermes Agent + Teknium",
+      "source_path": "skill-test/skills/productivity/teams-meeting-pipeline",
+      "synced_at": "2026-06-06T13:14:12.284603"
+    },
+    "webhook-subscriptions": {
+      "name": "webhook-subscriptions",
+      "display_name": "webhook-subscriptions",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Webhook subscriptions: event-driven agent runs.",
+      "trigger": "",
+      "tags": [
+        "webhook",
+        "events",
+        "automation",
+        "integrations",
+        "notifications",
+        "push"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/devops/webhook-subscriptions",
+      "synced_at": "2026-06-06T13:14:12.286017"
+    },
+    "kanban-worker": {
+      "name": "kanban-worker",
+      "display_name": "kanban-worker",
+      "version": "2.0.0",
+      "category": "uncategorized",
+      "description": "Pitfalls, examples, and edge cases for Hermes Kanban workers. The lifecycle itself is auto-injected into every worker's system prompt as KANBAN_GUIDANCE (from agent/prompt_builder.py); this skill is what you load when you want deeper detail on specific scenarios.",
+      "trigger": "",
+      "tags": [
+        "kanban",
+        "multi-agent",
+        "collaboration",
+        "workflow",
+        "pitfalls"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/devops/kanban-worker",
+      "synced_at": "2026-06-06T13:14:12.286964"
+    },
+    "skill-hub-management": {
+      "name": "skill-hub-management",
+      "display_name": "skill-hub-management",
+      "version": "1.0",
+      "category": "devops",
+      "description": "管理 Hermes Skill Hub - 技能索引站的创建、维护、数据同步和社区运营",
+      "trigger": "用户想要建立或维护 Skills 索引站、技能注册表、或技能分发平台",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/devops/skill-hub-management",
+      "synced_at": "2026-06-06T13:14:12.287932"
+    },
+    "kanban-orchestrator": {
+      "name": "kanban-orchestrator",
+      "display_name": "kanban-orchestrator",
+      "version": "3.0.0",
+      "category": "uncategorized",
+      "description": "Decomposition playbook + anti-temptation rules for an orchestrator profile routing work through Kanban. The \"don't do the work yourself\" rule and the basic lifecycle are auto-injected into every kanban worker's system prompt; this skill is the deeper playbook when you're specifically playing the orchestrator role.",
+      "trigger": "",
+      "tags": [
+        "kanban",
+        "multi-agent",
+        "orchestration",
+        "routing"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/devops/kanban-orchestrator",
+      "synced_at": "2026-06-06T13:14:12.289175"
+    },
+    "test-driven-development": {
+      "name": "test-driven-development",
+      "display_name": "test-driven-development",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "TDD: enforce RED-GREEN-REFACTOR, tests before code.",
+      "trigger": "",
+      "tags": [
+        "testing",
+        "tdd",
+        "development",
+        "quality",
+        "red-green-refactor"
+      ],
+      "author": "Hermes Agent (adapted from obra/superpowers)",
+      "source_path": "skill-test/skills/software-development/test-driven-development",
+      "synced_at": "2026-06-06T13:14:12.290317"
+    },
+    "debugging-hermes-tui-commands": {
+      "name": "debugging-hermes-tui-commands",
+      "display_name": "debugging-hermes-tui-commands",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Debug Hermes TUI slash commands: Python, gateway, Ink UI.",
+      "trigger": "",
+      "tags": [
+        "debugging",
+        "hermes-agent",
+        "tui",
+        "slash-commands",
+        "typescript",
+        "python"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/software-development/debugging-hermes-tui-commands",
+      "synced_at": "2026-06-06T13:14:12.291282"
+    },
+    "writing-plans": {
+      "name": "writing-plans",
+      "display_name": "writing-plans",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Write implementation plans: bite-sized tasks, paths, code.",
+      "trigger": "",
+      "tags": [
+        "planning",
+        "design",
+        "implementation",
+        "workflow",
+        "documentation"
+      ],
+      "author": "Hermes Agent (adapted from obra/superpowers)",
+      "source_path": "skill-test/skills/software-development/writing-plans",
+      "synced_at": "2026-06-06T13:14:12.292252"
+    },
+    "hermes-s6-container-supervision": {
+      "name": "hermes-s6-container-supervision",
+      "display_name": "hermes-s6-container-supervision",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Modify, debug, or extend the s6-overlay supervision tree inside the Hermes Agent Docker image — adding new services, debugging profile gateways, understanding the Architecture B main-program pattern.",
+      "trigger": "",
+      "tags": [
+        "docker",
+        "s6",
+        "supervision",
+        "gateway",
+        "profiles"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/software-development/hermes-s6-container-supervision",
+      "synced_at": "2026-06-06T13:14:12.293213"
+    },
+    "python-debugpy": {
+      "name": "python-debugpy",
+      "display_name": "python-debugpy",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Debug Python: pdb REPL + debugpy remote (DAP).",
+      "trigger": "",
+      "tags": [
+        "debugging",
+        "python",
+        "pdb",
+        "debugpy",
+        "breakpoints",
+        "dap",
+        "post-mortem"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/software-development/python-debugpy",
+      "synced_at": "2026-06-06T13:14:12.294138"
+    },
+    "systematic-debugging": {
+      "name": "systematic-debugging",
+      "display_name": "systematic-debugging",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "4-phase root cause debugging: understand bugs before fixing.",
+      "trigger": "",
+      "tags": [
+        "debugging",
+        "troubleshooting",
+        "problem-solving",
+        "root-cause",
+        "investigation"
+      ],
+      "author": "Hermes Agent (adapted from obra/superpowers)",
+      "source_path": "skill-test/skills/software-development/systematic-debugging",
+      "synced_at": "2026-06-06T13:14:12.295100"
+    },
+    "spike": {
+      "name": "spike",
+      "display_name": "spike",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Throwaway experiments to validate an idea before build.",
+      "trigger": "",
+      "tags": [
+        "spike",
+        "prototype",
+        "experiment",
+        "feasibility",
+        "throwaway",
+        "exploration",
+        "research",
+        "planning",
+        "mvp",
+        "proof-of-concept"
+      ],
+      "author": "Hermes Agent (adapted from gsd-build/get-shit-done)",
+      "source_path": "skill-test/skills/software-development/spike",
+      "synced_at": "2026-06-06T13:14:12.296046"
+    },
+    "subagent-driven-development": {
+      "name": "subagent-driven-development",
+      "display_name": "subagent-driven-development",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Execute plans via delegate_task subagents (2-stage review).",
+      "trigger": "",
+      "tags": [
+        "delegation",
+        "subagent",
+        "implementation",
+        "workflow",
+        "parallel"
+      ],
+      "author": "Hermes Agent (adapted from obra/superpowers)",
+      "source_path": "skill-test/skills/software-development/subagent-driven-development",
+      "synced_at": "2026-06-06T13:14:12.296960"
+    },
+    "requesting-code-review": {
+      "name": "requesting-code-review",
+      "display_name": "requesting-code-review",
+      "version": "2.0.0",
+      "category": "uncategorized",
+      "description": "Pre-commit review: security scan, quality gates, auto-fix.",
+      "trigger": "",
+      "tags": [
+        "code-review",
+        "security",
+        "verification",
+        "quality",
+        "pre-commit",
+        "auto-fix"
+      ],
+      "author": "Hermes Agent (adapted from obra/superpowers + MorAlekss)",
+      "source_path": "skill-test/skills/software-development/requesting-code-review",
+      "synced_at": "2026-06-06T13:14:12.298203"
+    },
+    "hermes-agent-skill-authoring": {
+      "name": "hermes-agent-skill-authoring",
+      "display_name": "hermes-agent-skill-authoring",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Author in-repo SKILL.md: frontmatter, validator, structure.",
+      "trigger": "",
+      "tags": [
+        "skills",
+        "authoring",
+        "hermes-agent",
+        "conventions",
+        "skill-md"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/software-development/hermes-agent-skill-authoring",
+      "synced_at": "2026-06-06T13:14:12.299193"
+    },
+    "plan": {
+      "name": "plan",
+      "display_name": "plan",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Plan mode: write markdown plan to .hermes/plans/, no exec.",
+      "trigger": "",
+      "tags": [
+        "planning",
+        "plan-mode",
+        "implementation",
+        "workflow"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/software-development/plan",
+      "synced_at": "2026-06-06T13:14:12.300061"
+    },
+    "node-inspect-debugger": {
+      "name": "node-inspect-debugger",
+      "display_name": "node-inspect-debugger",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Debug Node.js via --inspect + Chrome DevTools Protocol CLI.",
+      "trigger": "",
+      "tags": [
+        "debugging",
+        "nodejs",
+        "node-inspect",
+        "cdp",
+        "breakpoints",
+        "ui-tui"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/software-development/node-inspect-debugger",
+      "synced_at": "2026-06-06T13:14:12.300970"
+    },
+    "godmode": {
+      "name": "godmode",
+      "display_name": "godmode",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.",
+      "trigger": "",
+      "tags": [
+        "jailbreak",
+        "red-teaming",
+        "G0DM0D3",
+        "Parseltongue",
+        "GODMODE",
+        "uncensoring",
+        "safety-bypass",
+        "prompt-engineering",
+        "L1B3RT4S"
+      ],
+      "author": "Hermes Agent + Teknium",
+      "source_path": "skill-test/skills/red-teaming/godmode",
+      "synced_at": "2026-06-06T13:14:12.302442"
+    },
+    "himalaya": {
+      "name": "himalaya",
+      "display_name": "himalaya",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Himalaya CLI: IMAP/SMTP email from terminal.",
+      "trigger": "",
+      "tags": [
+        "Email",
+        "IMAP",
+        "SMTP",
+        "CLI",
+        "Communication"
+      ],
+      "author": "community",
+      "source_path": "skill-test/skills/email/himalaya",
+      "synced_at": "2026-06-06T13:14:12.304561"
+    },
+    "minecraft-modpack-server": {
+      "name": "minecraft-modpack-server",
+      "display_name": "minecraft-modpack-server",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Host modded Minecraft servers (CurseForge, Modrinth).",
+      "trigger": "",
+      "tags": [
+        "minecraft",
+        "gaming",
+        "server",
+        "neoforge",
+        "forge",
+        "modpack"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/gaming/minecraft-modpack-server",
+      "synced_at": "2026-06-06T13:14:12.305894"
+    },
+    "pokemon-player": {
+      "name": "pokemon-player",
+      "display_name": "pokemon-player",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Play Pokemon via headless emulator + RAM reads.",
+      "trigger": "",
+      "tags": [
+        "gaming",
+        "pokemon",
+        "emulator",
+        "pyboy",
+        "gameplay",
+        "gameboy"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/gaming/pokemon-player",
+      "synced_at": "2026-06-06T13:14:12.306849"
+    },
+    "baoyu-comic": {
+      "name": "baoyu-comic",
+      "display_name": "baoyu-comic",
+      "version": "1.56.1",
+      "category": "uncategorized",
+      "description": "Knowledge comics (知识漫画): educational, biography, tutorial.",
+      "trigger": "",
+      "tags": [
+        "comic",
+        "knowledge-comic",
+        "creative",
+        "image-generation"
+      ],
+      "author": "宝玉 (JimLiu)",
+      "source_path": "skill-test/skills/creative/baoyu-comic",
+      "synced_at": "2026-06-06T13:14:12.308077"
+    },
+    "pretext": {
+      "name": "pretext",
+      "display_name": "pretext",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Use when building creative browser demos with @chenglou/pretext — DOM-free text layout for ASCII art, typographic flow around obstacles, text-as-geometry games, kinetic typography, and text-powered generative art. Produces single-file HTML demos by default.",
+      "trigger": "",
+      "tags": [
+        "creative-coding",
+        "typography",
+        "pretext",
+        "ascii-art",
+        "canvas",
+        "generative",
+        "text-layout",
+        "kinetic-typography"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/creative/pretext",
+      "synced_at": "2026-06-06T13:14:12.310275"
+    },
+    "design-md": {
+      "name": "design-md",
+      "display_name": "design-md",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Author/validate/export Google's DESIGN.md token spec files.",
+      "trigger": "",
+      "tags": [
+        "design",
+        "design-system",
+        "tokens",
+        "ui",
+        "accessibility",
+        "wcag",
+        "tailwind",
+        "dtcg",
+        "google"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/creative/design-md",
+      "synced_at": "2026-06-06T13:14:12.311751"
+    },
+    "popular-web-designs": {
+      "name": "popular-web-designs",
+      "display_name": "popular-web-designs",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "54 real design systems (Stripe, Linear, Vercel) as HTML/CSS.",
+      "trigger": "",
+      "tags": [
+        "design",
+        "css",
+        "html",
+        "ui",
+        "web-development",
+        "design-systems",
+        "templates"
+      ],
+      "author": "Hermes Agent + Teknium (design systems sourced from VoltAgent/awesome-design-md)",
+      "source_path": "skill-test/skills/creative/popular-web-designs",
+      "synced_at": "2026-06-06T13:14:12.312911"
+    },
+    "baoyu-article-illustrator": {
+      "name": "baoyu-article-illustrator",
+      "display_name": "baoyu-article-illustrator",
+      "version": "1.57.0",
+      "category": "creative",
+      "description": "Article illustrations: type × style × palette consistency.",
+      "trigger": "",
+      "tags": [
+        "article-illustration",
+        "creative",
+        "image-generation"
+      ],
+      "author": "宝玉 (JimLiu)",
+      "source_path": "skill-test/skills/creative/baoyu-article-illustrator",
+      "synced_at": "2026-06-06T13:14:12.316654"
+    },
+    "p5js": {
+      "name": "p5js",
+      "display_name": "p5js",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "p5.js sketches: gen art, shaders, interactive, 3D.",
+      "trigger": "",
+      "tags": [
+        "creative-coding",
+        "generative-art",
+        "p5js",
+        "canvas",
+        "interactive",
+        "visualization",
+        "webgl",
+        "shaders",
+        "animation"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/creative/p5js",
+      "synced_at": "2026-06-06T13:14:12.318740"
+    },
+    "touchdesigner-mcp": {
+      "name": "touchdesigner-mcp",
+      "display_name": "touchdesigner-mcp",
+      "version": "1.1.0",
+      "category": "uncategorized",
+      "description": "Control a running TouchDesigner instance via twozero MCP — create operators, set parameters, wire connections, execute Python, build real-time visuals. 36 native tools.",
+      "trigger": "",
+      "tags": [
+        "TouchDesigner",
+        "MCP",
+        "twozero",
+        "creative-coding",
+        "real-time-visuals",
+        "generative-art",
+        "audio-reactive",
+        "VJ",
+        "installation",
+        "GLSL"
+      ],
+      "author": "kshitijk4poor",
+      "source_path": "skill-test/skills/creative/touchdesigner-mcp",
+      "synced_at": "2026-06-06T13:14:12.321106"
+    },
+    "manim-video": {
+      "name": "manim-video",
+      "display_name": "manim-video",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Manim CE animations: 3Blue1Brown math/algo videos.",
+      "trigger": "",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/creative/manim-video",
+      "synced_at": "2026-06-06T13:14:12.323430"
+    },
+    "ideation": {
+      "name": "ideation",
+      "display_name": "ideation",
+      "version": "1.0.0",
+      "category": "creative",
+      "description": "Generate project ideas via creative constraints.",
+      "trigger": "",
+      "tags": [
+        "Creative",
+        "Ideation",
+        "Projects",
+        "Brainstorming",
+        "Inspiration"
+      ],
+      "author": "SHL0MS",
+      "source_path": "skill-test/skills/creative/creative-ideation",
+      "synced_at": "2026-06-06T13:14:12.325514"
+    },
+    "excalidraw": {
+      "name": "excalidraw",
+      "display_name": "excalidraw",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Hand-drawn Excalidraw JSON diagrams (arch, flow, seq).",
+      "trigger": "",
+      "tags": [
+        "Excalidraw",
+        "Diagrams",
+        "Flowcharts",
+        "Architecture",
+        "Visualization",
+        "JSON"
+      ],
+      "author": "Hermes Agent",
+      "source_path": "skill-test/skills/creative/excalidraw",
+      "synced_at": "2026-06-06T13:14:12.326693"
+    },
+    "pixel-art": {
+      "name": "pixel-art",
+      "display_name": "pixel-art",
+      "version": "2.0.0",
+      "category": "creative",
+      "description": "Pixel art w/ era palettes (NES, Game Boy, PICO-8).",
+      "trigger": "",
+      "tags": [
+        "creative",
+        "pixel-art",
+        "arcade",
+        "snes",
+        "nes",
+        "gameboy",
+        "retro",
+        "image",
+        "video"
+      ],
+      "author": "dodo-reach",
+      "source_path": "skill-test/skills/creative/pixel-art",
+      "synced_at": "2026-06-06T13:14:12.328218"
+    },
+    "architecture-diagram": {
+      "name": "architecture-diagram",
+      "display_name": "architecture-diagram",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Dark-themed SVG architecture/cloud/infra diagrams as HTML.",
+      "trigger": "",
+      "tags": [
+        "architecture",
+        "diagrams",
+        "SVG",
+        "HTML",
+        "visualization",
+        "infrastructure",
+        "cloud"
+      ],
+      "author": "Cocoon AI (hello@cocoon-ai.com), ported by Hermes Agent",
+      "source_path": "skill-test/skills/creative/architecture-diagram",
+      "synced_at": "2026-06-06T13:14:12.329792"
+    },
+    "humanizer": {
+      "name": "humanizer",
+      "display_name": "humanizer",
+      "version": "2.5.1",
+      "category": "creative",
+      "description": "Humanize text: strip AI-isms and add real voice.",
+      "trigger": "",
+      "tags": [
+        "writing",
+        "editing",
+        "humanize",
+        "anti-ai-slop",
+        "voice",
+        "prose",
+        "text"
+      ],
+      "author": "Siqi Chen (@blader, https://github.com/blader/humanizer), ported by Hermes Agent",
+      "source_path": "skill-test/skills/creative/humanizer",
+      "synced_at": "2026-06-06T13:14:12.331477"
+    },
+    "comfyui": {
+      "name": "comfyui",
+      "display_name": "comfyui",
+      "version": "5.1.0",
+      "category": "creative",
+      "description": "Generate images, video, and audio with ComfyUI — install, launch, manage nodes/models, run workflows with parameter injection. Uses the official comfy-cli for lifecycle and direct REST/WebSocket API for execution.",
+      "trigger": "",
+      "tags": "",
+      "author": [
+        "kshitijk4poor",
+        "alt-glitch",
+        "purzbeats"
+      ],
+      "source_path": "skill-test/skills/creative/comfyui",
+      "synced_at": "2026-06-06T13:14:12.332680"
+    },
+    "ascii-video": {
+      "name": "ascii-video",
+      "display_name": "ascii-video",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "ASCII video: convert video/audio to colored ASCII MP4/GIF.",
+      "trigger": "",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/creative/ascii-video",
+      "synced_at": "2026-06-06T13:14:12.335949"
+    },
+    "baoyu-infographic": {
+      "name": "baoyu-infographic",
+      "display_name": "baoyu-infographic",
+      "version": "1.56.1",
+      "category": "uncategorized",
+      "description": "Infographics: 21 layouts x 21 styles (信息图, 可视化).",
+      "trigger": "",
+      "tags": [
+        "infographic",
+        "visual-summary",
+        "creative",
+        "image-generation"
+      ],
+      "author": "宝玉 (JimLiu)",
+      "source_path": "skill-test/skills/creative/baoyu-infographic",
+      "synced_at": "2026-06-06T13:14:12.337497"
+    },
+    "claude-design": {
+      "name": "claude-design",
+      "display_name": "claude-design",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Design one-off HTML artifacts (landing, deck, prototype).",
+      "trigger": "",
+      "tags": [
+        "design",
+        "html",
+        "prototype",
+        "ux",
+        "ui",
+        "creative",
+        "artifact",
+        "deck",
+        "motion",
+        "design-system"
+      ],
+      "author": "BadTechBandit",
+      "source_path": "skill-test/skills/creative/claude-design",
+      "synced_at": "2026-06-06T13:14:12.339223"
+    },
+    "ascii-art": {
+      "name": "ascii-art",
+      "display_name": "ascii-art",
+      "version": "4.0.0",
+      "category": "uncategorized",
+      "description": "ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.",
+      "trigger": "",
+      "tags": [
+        "ASCII",
+        "Art",
+        "Banners",
+        "Creative",
+        "Unicode",
+        "Text-Art",
+        "pyfiglet",
+        "figlet",
+        "cowsay",
+        "boxes"
+      ],
+      "author": "0xbyt4, Hermes Agent",
+      "source_path": "skill-test/skills/creative/ascii-art",
+      "synced_at": "2026-06-06T13:14:12.340152"
+    },
+    "sketch": {
+      "name": "sketch",
+      "display_name": "sketch",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Throwaway HTML mockups: 2-3 design variants to compare.",
+      "trigger": "",
+      "tags": [
+        "sketch",
+        "mockup",
+        "design",
+        "ui",
+        "prototype",
+        "html",
+        "variants",
+        "exploration",
+        "wireframe",
+        "comparison"
+      ],
+      "author": "Hermes Agent (adapted from gsd-build/get-shit-done)",
+      "source_path": "skill-test/skills/creative/sketch",
+      "synced_at": "2026-06-06T13:14:12.341086"
+    },
+    "songwriting-and-ai-music": {
+      "name": "songwriting-and-ai-music",
+      "display_name": "songwriting-and-ai-music",
+      "version": "1.0.0",
+      "category": "uncategorized",
+      "description": "Songwriting craft and Suno AI music prompts.",
+      "trigger": "",
+      "tags": [
+        "songwriting",
+        "music",
+        "suno",
+        "parody",
+        "lyrics",
+        "creative"
+      ],
+      "author": "Unknown",
+      "source_path": "skill-test/skills/creative/songwriting-and-ai-music",
+      "synced_at": "2026-06-06T13:14:12.341974"
+    },
+    "notebook-smart-processing": {
+      "name": "notebook-smart-processing",
+      "display_name": "notebook-smart-processing",
+      "version": "2.0",
+      "category": "productivity",
+      "description": "随手记智能处理系统 - 将日常想法转化为系统化的知识资产（记忆/技能/操作/结果/创新）",
+      "trigger": "用户想要建立持续的个人知识管理系统，将零散想法转化为可执行的知识资产",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-dev/projects/notebook-system/notebook-smart-processing",
+      "synced_at": "2026-06-06T13:14:12.379945"
+    },
+    "notebook-daily-processor": {
+      "name": "notebook-daily-processor",
+      "display_name": "notebook-daily-processor",
+      "version": "2.0",
+      "category": "productivity",
+      "description": "每日随手记智能处理 - 用语义理解分析、分类、总结用户的随手记",
+      "trigger": "定时任务调用，或用户请求分析随手记",
+      "tags": [],
+      "author": "Unknown",
+      "source_path": "skill-dev/projects/notebook-system/notebook-daily-processor",
+      "synced_at": "2026-06-06T13:14:12.381162"
+    }
+  }
+}

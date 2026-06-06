@@ -1,0 +1,18 @@
+{
+  "name": "songsee",
+  "display_name": "songsee",
+  "version": "1.0.0",
+  "category": "uncategorized",
+  "description": "Audio spectrograms/features (mel, chroma, MFCC) via CLI.",
+  "trigger": "",
+  "tags": [
+    "Audio",
+    "Visualization",
+    "Spectrogram",
+    "Music",
+    "Analysis"
+  ],
+  "author": "community",
+  "source_path": "skill-test/skills/media/songsee",
+  "synced_at": "2026-06-06T13:14:12.240290"
+}

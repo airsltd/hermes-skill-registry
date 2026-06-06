@@ -1,0 +1,19 @@
+{
+  "name": "github-repo-management",
+  "display_name": "github-repo-management",
+  "version": "1.1.0",
+  "category": "uncategorized",
+  "description": "Clone/create/fork repos; manage remotes, releases.",
+  "trigger": "",
+  "tags": [
+    "GitHub",
+    "Repositories",
+    "Git",
+    "Releases",
+    "Secrets",
+    "Configuration"
+  ],
+  "author": "Hermes Agent",
+  "source_path": "skill-test/skills/github/github-repo-management",
+  "synced_at": "2026-06-06T13:14:12.247484"
+}
