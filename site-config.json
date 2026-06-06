@@ -5,12 +5,10 @@
   "blog_subdomain": "skills.airs.ltd/blog",
   "source_skills": [
     {
-      "type": "local",
-      "path": "/userdata/hermes/profiles/skill-test/skills"
-    },
-    {
-      "type": "local", 
-      "path": "/userdata/hermes/profiles/skill-dev/projects/notebook-system"
+      "type": "github",
+      "org": "NousResearch",
+      "repo": "hermes-agent",
+      "skill_path": "skills/"
     }
   ],
   "output": {
