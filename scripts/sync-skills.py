@@ -1,24 +1,26 @@
 #!/usr/bin/env python3
 """
-Sync Skills - 从源代码同步技能元数据到 core/skills/
-递归扫描指定目录，提取 SKILL.md frontmatter，生成 JSON 索引
+Sync Skills - 从 GitHub 同步技能元数据
+扫描指定的 GitHub repo，提取 SKILL.md frontmatter，生成 JSON 索引
 """
 
 import os
 import re
 import json
+import subprocess
 from pathlib import Path
 from datetime import datetime
 
 PROJECT_DIR = Path(__file__).parent.parent
 CORE_DIR = PROJECT_DIR / "core"
 SKILLS_DIR = CORE_DIR / "skills"
+TEMP_GITHUB_DIR = PROJECT_DIR / ".github-temp"
 
 # 确保输出目录存在
 SKILLS_DIR.mkdir(parents=True, exist_ok=True)
 
 def extract_frontmatter(content):
-    """提取 YAML frontmatter (简化版)"""
+    """提取 YAML frontmatter"""
     match = re.match(r'^---\n(.*?)\n---', content, re.DOTALL | re.MULTILINE)
     if not match:
         return None
@@ -30,16 +32,13 @@ def extract_frontmatter(content):
             key = key.strip()
             value = value.strip()
             
-            # 处理数组
             if value.startswith('[') and value.endswith(']'):
                 items = value[1:-1].split(',')
                 data[key] = [item.strip().strip('"\'') for item in items if item.strip()]
-            # 处理布尔值
             elif value.lower() == 'true':
                 data[key] = True
             elif value.lower() == 'false':
                 data[key] = False
-            # 处理数字
             elif value.isdigit():
                 data[key] = int(value)
             else:
@@ -50,7 +49,6 @@ def extract_frontmatter(content):
 def scan_skill_directory(skill_path):
     """扫描单个技能目录"""
     skill_file = skill_path / "SKILL.md"
-    
     if not skill_file.exists():
         return None
     
@@ -59,11 +57,9 @@ def scan_skill_directory(skill_path):
             content = f.read()
         
         frontmatter = extract_frontmatter(content)
-        
         if not frontmatter:
             return None
         
-        # 构建技能元数据
         skill_meta = {
             "name": frontmatter.get('name', skill_path.name),
             "display_name": frontmatter.get('display_name', frontmatter.get('name', skill_path.name)),
@@ -73,82 +69,114 @@ def scan_skill_directory(skill_path):
             "trigger": frontmatter.get('trigger', ''),
             "tags": frontmatter.get('tags', []),
             "author": frontmatter.get('author', 'Unknown'),
-            "created": frontmatter.get('created', datetime.now().strftime('%Y-%m-%d')),
-            "source_path": str(skill_path.relative_to(PROJECT_DIR.parent.parent)),
-            "synced_at": datetime.now().isoformat(),
-            "readme_available": (skill_path / "README.md").exists(),
-            "has_tests": (skill_path / "tests").exists(),
-            "has_scripts": (skill_path / "scripts").exists()
+            "synced_at": datetime.now().isoformat()
         }
         
         return skill_meta
-        
-    except Exception as e:
+    except:
         return None
 
-def scan_directory_recursive(base_path, max_depth=3):
-    """递归扫描目录查找技能"""
+def clone_github_repo(org, repo, skill_path):
+    """克隆 GitHub repo 到临时目录"""
+    if TEMP_GITHUB_DIR.exists():
+        subprocess.run(["rm", "-rf", str(TEMP_GITHUB_DIR)], check=True)
+    
+    url = f"https://github.com/{org}/{repo}.git"
+    print(f"  📥 克隆 {org}/{repo}...")
+    
+    result = subprocess.run(
+        ["git", "clone", "--depth=1", "--filter=blob:none", "--sparse", url, str(TEMP_GITHUB_DIR)],
+        capture_output=True,
+        text=True
+    )
+    
+    if result.returncode != 0:
+        print(f"  ✗ 克隆失败：{result.stderr}")
+        return None
+    
+    # 只 checkout skills 目录
+    subprocess.run(
+        ["git", "-C", str(TEMP_GITHUB_DIR), "sparse-checkout", "set", skill_path],
+        capture_output=True
+    )
+    
+    return TEMP_GITHUB_DIR / skill_path
+
+def scan_level(base_path, depth, max_depth):
+    """递归扫描目录"""
+    if depth > max_depth:
+        return []
+    
     skills = []
-    
-    def scan_level(current_path, depth):
-        if depth > max_depth:
-            return
+    for item in base_path.iterdir():
+        if not item.is_dir() or item.name.startswith('.'):
+            continue
         
-        for item in current_path.iterdir():
-            if not item.is_dir():
-                continue
-            
-            if item.name.startswith('.') or item.name in ['__pycache__', 'node_modules']:
-                continue
-            
-            # 尝试扫描当前目录作为技能
-            skill_meta = scan_skill_directory(item)
-            if skill_meta:
-                skills.append(skill_meta)
-            
-            # 递归扫描子目录
-            scan_level(item, depth + 1)
+        skill_meta = scan_skill_directory(item)
+        if skill_meta:
+            skills.append(skill_meta)
+        
+        skills.extend(scan_level(item, depth + 1, max_depth))
     
-    scan_level(base_path, 0)
     return skills
 
 def sync_all_skills():
     """同步所有技能源"""
-    # 加载配置
     config_file = PROJECT_DIR / "site-config.json"
     with open(config_file, 'r', encoding='utf-8') as f:
         config = json.load(f)
     
-    print("🔍 开始同步技能...")
-    print(f"📂 输出目录：{SKILLS_DIR}")
-    
+    print("🔍 开始同步技能...\n")
     all_skills = []
     
-    # 扫描所有配置的源
     for source in config.get('source_skills', []):
-        source_path = Path(source['path'])
+        source_type = source.get('type', 'local')
         
-        if not source_path.exists():
-            print(f"\n⚠️  源不存在：{source_path}")
-            continue
-        
-        print(f"\n📂 扫描源：{source_path}")
-        
-        # 递归扫描技能（深度 3：skills/category/name/）
-        skills_found = scan_directory_recursive(source_path, max_depth=3)
-        
-        for skill_meta in skills_found:
-            all_skills.append(skill_meta)
+        if source_type == 'github':
+            org = source.get('org')
+            repo = source.get('repo')
+            skill_path = source.get('path', 'skills/')
             
-            # 保存单个技能 JSON
-            output_file = SKILLS_DIR / f"{skill_meta['name']}.json"
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(skill_meta, f, indent=2, ensure_ascii=False)
+            if not org or not repo:
+                print(f"⚠️  GitHub 源配置不完整：{source}")
+                continue
             
-            print(f"  ✓ {skill_meta['name']} ({skill_meta['category']})")
+            # 克隆 repo
+            github_dir = clone_github_repo(org, repo, skill_path)
+            if not github_dir:
+                continue
+            
+            # 扫描技能
+            print(f"  📂 扫描：{skill_path}")
+            skills_found = scan_level(github_dir, 0, 2)
+            
+            for skill_meta in skills_found:
+                all_skills.append(skill_meta)
+                output_file = SKILLS_DIR / f"{skill_meta['name']}.json"
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    json.dump(skill_meta, f, indent=2, ensure_ascii=False)
+                print(f"    ✓ {skill_meta['name']} ({skill_meta['category']})")
+            
+            # 清理临时目录
+            subprocess.run(["rm", "-rf", str(TEMP_GITHUB_DIR)], check=True)
+        
+        elif source_type == 'local':
+            source_path = Path(source['path'])
+            if not source_path.exists():
+                print(f"⚠️  本地源不存在：{source_path}")
+                continue
+            
+            print(f"📂 扫描本地源：{source_path}")
+            skills_found = scan_level(source_path, 0, 3)
+            
+            for skill_meta in skills_found:
+                all_skills.append(skill_meta)
+                output_file = SKILLS_DIR / f"{skill_meta['name']}.json"
+                with open(output_file, 'w', encoding='utf-8') as f:
+                    json.dump(skill_meta, f, indent=2, ensure_ascii=False)
+                print(f"  ✓ {skill_meta['name']} ({skill_meta['category']})")
     
-    # 生成总索引
-    index_file = SKILLS_DIR / "index.json"
+    # 生成索引
     index_data = {
         "generated_at": datetime.now().isoformat(),
         "total_skills": len(all_skills),
@@ -156,7 +184,6 @@ def sync_all_skills():
         "skills": {}
     }
     
-    # 按分类统计
     for skill in all_skills:
         cat = skill['category']
         if cat not in index_data['categories']:
@@ -164,19 +191,16 @@ def sync_all_skills():
         index_data['categories'][cat].append(skill['name'])
         index_data['skills'][skill['name']] = skill
     
-    with open(index_file, 'w', encoding='utf-8') as f:
+    with open(SKILLS_DIR / "index.json", 'w', encoding='utf-8') as f:
         json.dump(index_data, f, indent=2, ensure_ascii=False)
     
     print(f"\n{'='*60}")
-    print(f"✅ 同步完成!")
-    print(f"📊 总技能数：{len(all_skills)}")
-    print(f"📂 分类数：{len(index_data['categories'])}")
-    print(f"📁 索引文件：{index_file}")
+    print(f"✅ 同步完成！共 {len(all_skills)} 个技能，{len(index_data['categories'])} 个分类")
     
-    # 显示分类统计
-    print(f"\n📂 分类统计:")
-    for cat, skills in sorted(index_data['categories'].items()):
-        print(f"  {cat}: {len(skills)} 个")
+    if index_data['categories']:
+        print(f"\n分类统计:")
+        for cat, names in sorted(index_data['categories'].items()):
+            print(f"  {cat}: {len(names)} 个")
     
     return all_skills
 

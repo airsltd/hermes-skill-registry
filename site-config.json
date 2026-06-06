@@ -2,13 +2,12 @@
   "name": "Hermes Skill Registry",
   "description": "发现和安装优质的 Hermes Agent 技能",
   "domain": "skills.airs.ltd",
-  "blog_subdomain": "skills.airs.ltd/blog",
   "source_skills": [
     {
       "type": "github",
       "org": "NousResearch",
       "repo": "hermes-agent",
-      "skill_path": "skills/"
+      "path": "skills/"
     }
   ],
   "output": {
